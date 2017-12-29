@@ -283,6 +283,18 @@ class: center, middle
 ```
 
 ---
+## Stash
+* Commit을 하긴 좀 부족하고, 다른 브랜치 작업은 해야겠고.
+* Stash는 Modified이면서 Tracked 상태인 파일과 Staged 상태인 파일들을 보관해두는 장소
+	- Staged 상태 파일들은 복구될 때 Staging Area에서 내려감
+* 아직 끝나지 않은 수정사항을 스택에 잠시 저장했다가 나중에 다시 적용할 수 있음
+```bash
+$ `git stash`           [Commit하지 않은 파일들을 보관]
+$ `git stash apply`     [보관한 파일들을 복구]
+$ `git stash drop`      [보관 장소 제거]
+```
+
+---
 ## Tagging
 * 태깅 – 태그 달기
 	- Annotated Tag: 태거 이름, 이메일, 날짜, 커맨트 등을 함께 저장, -a 옵션 사용
