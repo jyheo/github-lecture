@@ -162,7 +162,7 @@ class: center, middle
 	$ mkdir my_proj
 	$ cd my_proj/
 	$ ls
-	*$ git init
+	$ `git init`
 	Initialized empty Git repository in /home/jyheo/my_proj/.git/
 	$ ls
 	$ ls -a
@@ -170,7 +170,7 @@ class: center, middle
 ```
 * 원격 서버 저장소에서 복제해오기(git clone [원격 주소])
 ```bash
-	*$ git clone https://github.com/jyheo/test
+	$ `git clone https://github.com/jyheo/test`
 	Cloning into 'test'...
 	remote: Counting objects: 46, done.
 	remote: Total 46 (delta 0), reused 0 (delta 0), pack-reused 46
@@ -195,7 +195,7 @@ class: center, middle
 * 새 파일 생성, tracked-staged로 변경
 ```bash
 	$ echo "newfile" > newfile
-	*$ git status
+	$ `git status`
 	On branch master
 	Your branch is up-to-date with 'origin/master'.
 	Untracked files:
@@ -206,8 +206,8 @@ class: center, middle
 	nothing added to commit but untracked files present (use "git add" to track)
 ```
 ```bash
-	*$ git add newfile
-	*$ git status
+	$ `git add newfile`
+	$ `git status`
 	On branch master
 	Your branch is up-to-date with 'origin/master'.
 	Changes to be committed:
@@ -220,7 +220,7 @@ class: center, middle
 * tracked인 기존 파일 수정, staged로 변경,
 ```bash
 	$ vi README.md
-	*$ git status
+	$ `git status`
 	On branch master
 	Your branch is up-to-date with 'origin/master'.
 	Changes to be committed:
@@ -235,8 +235,8 @@ class: center, middle
 		modified:   README.md
 ```
 ```bash
-	*$ git add README.md
-	*$ git status
+	$ `git add README.md`
+	$ `git status`
 	On branch master
 	Your branch is up-to-date with 'origin/master'.
 	Changes to be committed:
@@ -252,11 +252,11 @@ class: center, middle
 	- 변경된 파일과 커맨트가 로컬 저장소에 저장됨
 * $ git commit 또는 $ git commit -m “커맨트”
 ```bash
-	*$ git commit -m "test"
+	$ `git commit -m "test"`
 	[master db3f718] test
 	 2 files changed, 2 insertions(+)
 	 create mode 100644 newfile
-	*$ git status
+	$ `git status`
 	On branch master
 	Your branch is ahead of 'origin/master' by 1 commit.
 	  (use "git push" to publish your local commits)
@@ -309,9 +309,9 @@ class: center, middle
 * 같이 Commit해야 할 파일을 실수로 빼고 commit 했을 때:
 	- $ git commit --amend
 ```bash
-		*$ git commit -m "test"
-		*$ git add forgotten
-		*$ git commit --amend
+		$ `git commit -m "test"`
+		$ `git add forgotten`
+		$ `git commit --amend`
 		[master 26f6884] test
 		 Date: Tue Jan 3 06:09:27 2017 +0900
 		 3 files changed, 2 insertions(+)
@@ -324,8 +324,8 @@ class: center, middle
 * Staged를 되돌리기
 	- $ git reset HEAD [파일 이름]
 ```bash
-		*$ git add newfile2
-		*$ git status
+		$ `git add newfile2`
+		$ `git status`
 		On branch master
 		Your branch is ahead of 'origin/master' by 1 commit.
 		  (use "git push" to publish your local commits)
@@ -334,8 +334,8 @@ class: center, middle
 		.
 			new file:   newfile2
 		.
-		*$ git reset HEAD newfile2
-		*$ git status
+		$ `git reset HEAD newfile2`
+		$ `git status`
 		On branch master
 		Your branch is ahead of 'origin/master' by 1 commit.
 		  (use "git push" to publish your local commits)
@@ -352,7 +352,7 @@ class: center, middle
 * Modified를 마지막 Commit 버전으로 되돌리기
 	- $ git checkout -- [파일 이름]
 ```bash
-		*$ git status
+		$ `git status`
 		On branch master
 		Your branch is ahead of 'origin/master' by 1 commit.
 		  (use "git push" to publish your local commits)
@@ -363,8 +363,8 @@ class: center, middle
 			modified:   newfile
 		.
 		no changes added to commit (use "git add" and/or "git commit -a")
-		*$ git checkout -- newfile
-		*$ git status
+		$ `git checkout -- newfile`
+		$ `git status`
 		On branch master
 		Your branch is ahead of 'origin/master' by 1 commit.
 		  (use "git push" to publish your local commits)
@@ -378,12 +378,12 @@ class: center, middle
 	- Lightweight Tag: 단순 태깅
 	- $ git tag [-a] [태그 이름] [기타 옵션]
 ```bash
-		*$ git tag
-		*$ git tag -a v1.0 -m "my version 1.0"
-		*$ git tag
+		$ `git tag`
+		$ `git tag -a v1.0 -m "my version 1.0"`
+		$ `git tag`
 		v1.0
-		*$ git tag v1.0-lw
-		*$ git tag
+		$ `git tag v1.0-lw`
+		$ `git tag`
 		v1.0
 		v1.0-lw
 ```
@@ -411,7 +411,8 @@ class: center, middle
         var slideshow = remark.create({
           ratio: '16:9',
           highlightStyle: 'github',
-          highlightLines: true
+          highlightLines: false,
+		  highlightSpans: true
         });
     </script>
     <!--<script src="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.min.js"></script>
