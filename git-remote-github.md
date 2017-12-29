@@ -14,7 +14,7 @@ class: center, middle
 * git을 이용하여 원격 저장소에 접근하는 방법
 * $ git remote
 ```bash
-	*$ git remote -v
+	$ `git remote -v`
 	origin	https://github.com/jyheo/test (fetch)
 	origin	https://github.com/jyheo/test (push)
 ```
@@ -25,25 +25,25 @@ class: center, middle
 * 원격 저장소 추가
 	- $ git remote add [원격 이름] [원격지 주소]
 ```bash
-	$ mkdir tmp
-	$ cd tmp
-	$ ls
-	*$ git init
-	Initialized empty Git repository in /home/jyheo/tmp/.git/
-	*$ git remote add origin https://github.com/jyheo/test
-	*$ git fetch origin
-	remote: Counting objects: 46, done.
-	remote: Total 46 (delta 0), reused 0 (delta 0), pack-reused 46
-	Unpacking objects: 100% (46/46), done.
-	From https://github.com/jyheo/test
-	.* [new branch]      master     -> origin/master
-	.* [new branch]      new        -> origin/new
-	*$ ls
-	*$ git checkout master
-	Branch master set up to track remote branch master from origin.
-	Already on 'master'
-	*$ ls
-	LICENSE  README.md  fork_pull_request.c
+		$ mkdir tmp
+		$ cd tmp
+		$ ls
+		$ `git init`
+		Initialized empty Git repository in /home/jyheo/tmp/.git/
+		$ `git remote add origin https://github.com/jyheo/test`
+		$ `git fetch origin`
+		remote: Counting objects: 46, done.
+		remote: Total 46 (delta 0), reused 0 (delta 0), pack-reused 46
+		Unpacking objects: 100% (46/46), done.
+		From https://github.com/jyheo/test
+		* [new branch]      master     -> origin/master
+		* [new branch]      new        -> origin/new
+		$ ls
+		$ `git checkout master`
+		Branch master set up to track remote branch master from origin.
+		Already on 'master'
+		$ ls
+		LICENSE  README.md  fork_pull_request.c
 ```
 
 ---
@@ -51,22 +51,22 @@ class: center, middle
 * 원격 저장소에 로컬 저장소 내용 보내기
 	- $ git push [원격 이름] [브랜치 이름]
 ```bash
-	*$ git add tmp
-	*$ git commit -m "test"
-	[master 6d4b5d8] test
-	 1 file changed, 0 insertions(+), 0 deletions(-)
-	 create mode 100644 tmp
-	*$ git push origin master
-	Username for 'https://github.com': jyheo
-	Password for 'https://jyheo@github.com':
-	Counting objects: 3, done.
-	Delta compression using up to 4 threads.
-	Compressing objects: 100% (2/2), done.
-	Writing objects: 100% (3/3), 262 bytes | 0 bytes/s, done.
-	Total 3 (delta 1), reused 0 (delta 0)
-	remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
-	To https://github.com/jyheo/test
-	   aaff3db..6d4b5d8  master -> master
+		$ `git add tmp`
+		$ `git commit -m "test"`
+		[master 6d4b5d8] test
+		 1 file changed, 0 insertions(+), 0 deletions(-)
+		 create mode 100644 tmp
+		$ `git push origin master`
+		Username for 'https://github.com': jyheo
+		Password for 'https://jyheo@github.com':
+		Counting objects: 3, done.
+		Delta compression using up to 4 threads.
+		Compressing objects: 100% (2/2), done.
+		Writing objects: 100% (3/3), 262 bytes | 0 bytes/s, done.
+		Total 3 (delta 1), reused 0 (delta 0)
+		remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+		To https://github.com/jyheo/test
+		   aaff3db..6d4b5d8  master -> master
 ```
 
 ---
@@ -74,7 +74,7 @@ class: center, middle
 * 원격 저장소에서 최근 내용 가져오기
 	- $ git fetch [원격_이름]
 ```bash
-		*$ git fetch origin
+		$ `git fetch origin`
 		remote: Counting objects: 5, done.
 		remote: Compressing objects: 100% (3/3), done.
 		remote: Total 5 (delta 3), reused 4 (delta 2), pack-reused 0
@@ -85,7 +85,7 @@ class: center, middle
 * 가져온 내용을 로컬 작업 디렉터리 내용과 합치기
 	- $ git merge [원격_이름]
 ```bash
-		*$ git merge origin
+		$ `git merge origin`
 		Updating 6d4b5d8..d0b5c28
 		Fast-forward
 		 README.md | 3 +--
@@ -124,7 +124,7 @@ class: center, middle
 * Git clone
 	- $ git clone https://github.com/jyheo/test2.git
 ```bash
-		*$ git clone https://github.com/jyheo/test2.git
+		$ `git clone https://github.com/jyheo/test2.git`
 		Cloning into 'test2'...
 		remote: Counting objects: 5, done.
 		remote: Compressing objects: 100% (4/4), done.
@@ -139,14 +139,14 @@ class: center, middle
 ## Github 저장소로 Push
 * $ git push origin master
 ```bash
-	*$ git add newfile
-	*$ git commit -m "newfile"
+	$ `git add newfile`
+	$ `git commit -m "newfile"`
 	[master f13622d] newfile
 	 1 file changed, 0 insertions(+), 0 deletions(-)
 	 create mode 100644 newfile
-	*$ git push origin master
-	*Username for 'https://github.com': jyheo
-	*Password for 'https://jyheo@github.com':
+	$ `git push origin master`
+	 `Username` for 'https://github.com': jyheo
+	 `Password` for 'https://jyheo@github.com':
 	Counting objects: 3, done.
 	Delta compression using up to 4 threads.
 	Compressing objects: 100% (2/2), done.
@@ -215,30 +215,3 @@ class: center, middle
 		+ $ git fetch origin
 		+ $ git merge origin
 
----
-## 원격 브랜치 Remote Branch
-
-
----
-## Gihub Issue
-* Issues에서 New issue 버튼
-	- Commit ID를 복사해 붙여 넣으면 해당 commit에 대한 링크가 생김
-	- #과 issue 번호나 pull request 번호를 쓰면 링크가 생김
-<img src="images/github-issue.png">
-
----
-## Gihub Issue
-<img src="images/github-issue2.png">
-
----
-## Gihub Issue
-* 누구나 issue를 만들 수 있음
-	- 기능 제안, 버그 리포팅 등등
-* 프로젝트 collaborator들이 issue의 중요도에 따라 label을 붙일 수 있음
-	- 버그, 도움, 기능 추가 등
-* 개발자가 issue를 직접 해결하고 close하거나 다른 사람에게 assign할 수 있음
-* 어떻게든 해결하고 나면 close
-
----
-## Exercise
-* 
