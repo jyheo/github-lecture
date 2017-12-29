@@ -18,3 +18,253 @@ class: center, middle
 
 ---
 ## Git Branching
+* ‘master’ 브랜치
+	- Git init에 의해 처음으로 저장소가 초기화될 때 기본으로 생기는 브랜치(일반적으로 메인 라인)
+	- 그렇다고 다른 브랜치보다 특별한 것은 없음
+* HEAD
+	- 현재 사용중인 브랜치의 가장 최근 커밋을 가리키는 포인터
+
+```bash
+$ `git branch -a`      브랜치 목록 보기
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/new
+```
+
+---
+## 브랜치 생성
+* $ git branch [브랜치 이름]
+```bash
+	$ `git branch testing`
+	$ `git branch -a`
+	* master
+	  testing  
+```
+<img src="images/branch-create.png">
+* Git 내부에서 브랜치는 커밋을 가리키는 포인터로 관리됨
+
+---
+## 작업 브랜치 변경
+* 현재 작업 중인 브랜치를 다른 것으로 변경
+	- $ git checkout [브랜치_이름]
+```bash
+		$ `git checkout testing`
+		Switched to branch 'testing'
+		$ `git branch -a`
+		  master
+		* testing
+```
+<img src="images/branch-checkout.png">
+
+---
+## 작업 브랜치 변경
+* 변경된 브랜치(testing)에서 커밋을 하면.
+```bash
+	$ touch test.c
+	$ `git add test.c`
+	$ `git commit -m "added test.c"`
+	[testing `6888fc3`] added test.c
+	 1 file changed, 0 insertions(+), 0 deletions(-)
+	 create mode 100644 test.c
+```
+<img src="images/branch-commit.png">
+
+---
+## 작업 브랜치 변경
+* 다시 master 브랜치로 변경
+```bash
+	$ `git checkout master`
+	Switched to branch 'master'
+	Your branch is up-to-date with 'origin/master'.
+```
+<img src="images/branch-commit2.png">
+	- HEAD는 master의 마지막 커밋을 가리키게 바뀜.
+	- 직전에 testing 브랜치에서 추가했던 test.c 파일은 보이지 않음
+	
+---
+## 작업 브랜치 변경
+* Master 브랜치에서 커밋을 하면.
+```bash
+	$ vi fork_pull_request.c
+	$ `git commit -a -m "new comment added"`
+	[master `f1f2a4c`] new comment added
+	 1 file changed, 1 insertion(+)
+```
+<img src="images/branch-commit3.png">
+
+---
+## 브랜치 합치기 Merge
+* $ git merge [현재 브랜치에 합칠 브랜치]
+	- master 브랜치에 testing 브랜치 내용을 합침
+```bash
+		$ `git branch`
+		* master
+		  testing
+		$ `git merge testing`
+		Merge made by the 'recursive' strategy.
+		 test.c | 0
+		 1 file changed, 0 insertions(+), 0 deletions(-)
+		 create mode 100644 test.c
+		$ ls
+		LICENSE  README.md  fork_pull_request.c  name  test.c
+```
+
+---
+## 브랜치 합치기 Merge
+* Merge한 결과는.
+```bash
+	$ `git log --oneline --decorate --graph --all`
+	*   `1d4fa7c` (HEAD -> master) Merge branch 'testing'
+	|\  
+	| * 6888fc3 (testing) added test.c
+	* | f1f2a4c new comment added
+	|/  
+```
+<img src="images/branch-commit4.png">
+
+---
+## 브랜치&머지 예제
+* 상황
+	- 새 기능 추가용 브랜치(iss53)에서 새로운 기능을 추가하고 있는 중
+	- 갑자기 제품에 버그 발생/긴급 수정 필요
+* 해결
+	- 마스터(master) 브랜치로 변경
+		+ 여기에서 master 브랜치가 제품 릴리즈용 브랜치라고 가정한 것임
+	- 버그 수정용 핫픽스 브랜치(hotfix) 생성
+	- 문제 해결 후 핫픽스 브랜치를 마스터로 머지
+	- 원래 작업하던 iss53 브랜치로 변경하여 계속 작업
+
+---
+## 브랜치&머지 예제
+* Iss53 브랜치를 만들어서 새 기능 추가 작업 상황
+```bash
+	$ `git checkout -b iss53`
+	Switched to a new branch 'iss53'
+	$ vi main.c
+	$ git commit -a -m "print hello"
+	[iss53 `C3`] print hello
+	 1 file changed, 5 insertions(+)
+```
+<img src="images/branch-ex1.png">
+
+<pre style="position:absolute;right:100px;bottom:50px">
+<small><b>
+$ git checkout -b iss53
+-b 옵션은 branch를 새로 만들면서 변경함
+즉, 아래와 같은 것임
+$ git branch iss53
+$ git checkout iss53
+</b></small>
+</pre>
+
+---
+## 브랜치&머지 예제
+* 제품 버그 수정을 위해 master 브랜치로 변경하고 hotfix 브랜치 생성, 버그 수정
+```bash
+	$ `git checkout master`
+	Switched to branch 'master'
+	$ `git checkout -b hotfix`
+	Switched to a new branch 'hotfix'
+	$ vi main.c
+	$ `git commit -a -m "return 1"`
+	[hotfix `C4`] return 1
+	 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+<img src="images/branch-ex2.png">
+
+---
+## 브랜치&머지 예제
+* 버그 수정한 hotfix 브랜치를 테스트 완료 후 hotfix 브랜치를 master 브랜치로 머지
+```bash
+	$ `git checkout master`
+	Switched to branch 'master'
+	$ `git merge hotfix`
+	Updating b117ce3..eaa3e91
+	Fast-forward
+	 main.c | 2 +-
+	 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+<img src="images/branch-ex3.png" width=400px>
+
+---
+## 브랜치&머지 예제
+* 불필요한 hotfix 브랜치를 제거하고 이전에 하던 작업 iss53으로 돌아가서 새 기능 추가 진행
+```bash
+$ `git branch -d hotfix`           [-d 옵션은 브랜치 삭제]
+Deleted branch hotfix (was eaa3e91).
+$ `git checkout iss53`
+Switched to branch 'iss53'
+$ vi main.c
+$ `git commit -a -m "print world"`
+[iss53 `C5`] print world
+ 1 file changed, 1 insertion(+)
+```
+<img src="images/branch-ex4.png" width=500px>
+
+---
+## 브랜치&머지 예제
+* 새 기능 추가 iss53 작업을 완료하고 master로 머지 시키기
+```bash
+	$ `git checkout master`
+	Switched to branch 'master'
+	$ `git merge iss53`
+	Auto-merging main.c
+	CONFLICT (content): `Merge conflict in main.c`
+	Automatic merge failed; fix conflicts and then commit the result.
+```
+* 가끔 이렇게 Conflict가 나는 경우가 생김
+	- master와 iss53의 공통 커밋 이후에 동일한 부분을 서로 다르게 수정했을 경우 발생
+	- 예를 들어 앞의 그림에서 C3와 C4에 동일한 부분을 다르게 수정했다면 발생할 수 있음
+
+	
+---
+## 브랜치&머지 예제
+* Conflict 해결
+	- 해당 파일을 열어보면 어디에서 conflict가 발생 했는지 확인 가능. 파일 수정하여 해결 후 커밋.  
+<img src="images/branch-ex5.png"  width=60%>
+```bash
+	$ `git -a commit`
+	[master `C6`] Merge branch 'iss53'
+```
+<img src="images/branch-ex6.png" width=500px>
+
+???
+참고: $ git mergetool
+
+---
+## 브랜치&머지 예제
+* 브랜치 관리
+```bash
+	$ `git branch`                        [브랜치를 모두 보여줌]
+	  iss53
+	* master
+	  testing
+	$ `git branch -v`                    [각 브랜치의 마지막 커밋]
+	  iss53   2f788e8 return -1
+	* master  5d9b98a Merge branch 'iss53'
+	  testing ac33802 test
+	$ `git branch –merged`        [현재 브랜치에 머지된 것만 보여줌]
+	  iss53
+	* master
+	$ `git branch –no-merged`    [현재 브랜치에 머지 안된 것만]
+	  testing
+	$ `git branch -d testing`        [머지가 안된 브랜치는 삭제 안됨]
+	error: The branch 'testing' is not fully merged.
+	If you are sure you want to delete it, run 'git branch -D testing'.
+```
+
+---
+## Exercise
+* 저장소 새로 만들기
+* index.html 파일 생성/commit
+* index.html에 간단한 자기 소개 html 작성/commit
+* 브랜치 food 생성/변경
+* food.html(좋아하는 음식) 작성/commit
+* index.html에서 food.html 링크 추가/commit
+* 브랜치 master로 변경
+* index.html 적당히 수정/commit
+* food 브랜치를 master로 merge
+* conflict가 발생한다면 이를 해결하고 commit
+* food 브랜치 삭제
+
