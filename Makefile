@@ -1,5 +1,5 @@
 
-TARGETS=oss-intro.html git-basic.html git-branch.html git-remote.html
+TARGETS=oss-intro.html git-basic.html git-branch.html git-remote-github.html
 
 html: $(TARGETS)
 
