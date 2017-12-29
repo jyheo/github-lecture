@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+       font-family: 'Yanone Kaffeesatz';
+       font-weight: 400;
+       margin-bottom: 0;
+       margin-top: 10px;
+      }
+      h1 { font-size: 60px; }
+      h2 { font-size: 3em; }
+      h3 { font-size: 1.6em; }
+      .remark-slide-content { font-size: 30px; }
+      .remark-slide-number { font-size: 18px; }
+      li { padding: 4px; }
+      li li { font-size: 80%; }
+      .footnote{ font-size: 13px; left: 50px; bottom: 12px; position: absolute; }
+      .top-line{ left: 0px; top: 0px; width: 100%; height: 1em; position: absolute; background-color: #DA0002}
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      code { border-left: 6px solid #DA0002; }
+      .left-column-70 {
+        width: 70%;
+        float: left;
+      }
+      .left-column-50 {
+        width: 50%;
+        float: left;
+      }
+      .right-column-30 {
+        width: 30%;
+        float: right;
+      }
+      .right-column-50 {
+        width: 50%;
+        float: right;
+      }
+      .right {
+        float: right;
+        margin-left: 1em;
+      }
+      strong {
+        color: red;
+      }
+      em {
+        color: darkblue;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 70%;
+      }
+      th, td {
+        text-align: left;
+      }
+      tr:nth-child(even){background-color: #f2f2f2}
+      th {
+        background-color: #4CAF50;
+        color: white;
+      }
+      small {
+        font-size: 50%
+      }
+
+	  @page {
+		size: 1210px 681px;
+		margin: 0;
+	  }
+
+	  @media print {
+	    .remark-slide-scaler {
+		  width: 100% !important;
+		  height: 100% !important;
+		  transform: scale(1) !important;
+		  top: 0 !important;
+		  left: 0 !important;
+	    }
+	  }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+layout: true
+.top-line[]
+
+---
+class: center, middle
+# Git Remote Branch
+## Github
+
+허준영(jyheo@hansung.ac.kr)
+
+---
+## 원격 브랜치 Remote Branch
+* 원격 브랜치는 단순히 원격 저장소의 브랜치를 가리키는 포인터  
+<img src="images/rbranch.png">
+
+.footnote[출처: https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches]
+
+---
+## 원격 브랜치 Remote Branch
+* 내가 clone한 이후에 원격 저장소에 누군가 commit(31b8e, 190a3)을 push하였고, 나는 로컬 저장소에 commit(a38de, 893cf)을 수행하였음  
+<img src="images/rbranch2.png" width=70%>
+
+---
+## 원격 브랜치 Remote Branch
+* $ git fetch origin
+	- 원격지 origin의 최신 내용(커밋)을 가져옴  
+<img src="images/rbranch3.png">
+	- 현재 브랜치(여기에서는 master)에 원격지에서 가져온 것을 머지하려면.
+	- $ git merge origin/master
+
+---
+## 브랜치 Push
+* 브랜치를 원격지에 올려서 공유하기
+```bash
+	$ `git branch testing`                                [로컬 브랜치]
+	$ `git checkout testing`
+	Switched to branch 'testing'
+	$ touch testfile
+	$ `git add testfile`
+	$ `git commit -m "testfile added"`
+	[testing daf25d2] testfile added
+	 1 file changed, 0 insertions(+), 0 deletions(-)
+	 create mode 100644 testing
+	$ `git push origin testing`      [원격지 origin에 testing 브랜치 push]
+	Username for 'https://github.com': jyheo
+	Password for 'https://jyheo@github.com':
+	Counting objects: 3, done.
+	Delta compression using up to 4 threads.
+	Compressing objects: 100% (2/2), done.
+	Writing objects: 100% (3/3), 271 bytes | 0 bytes/s, done.
+	Total 3 (delta 1), reused 0 (delta 0)
+	remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+	To https://github.com/jyheo/test.git
+	 * `[new branch]`      `testing -> testing`
+```
+
+---
+## 브랜치 Push
+* 원격지에 새로 testing 브랜치가 push된 것을 확인
+<img src="images/rbranch-push.png">
+
+---
+## 브랜치 Push
+* 트래킹 브랜치
+	- 원격지의 브랜치로 작업하기
+* $ git checkout -b [로컬 브랜치] [원격 브랜치]
+```bash
+	$ `git branch -a`
+	* master
+	  remotes/origin/HEAD -> origin/master
+	  remotes/origin/master
+	  remotes/origin/new
+	  remotes/origin/testing
+	$ `git checkout -b testing origin/testing`
+	Branch testing set up to track remote branch testing from origin.
+	Switched to a new branch 'testing'
+	$ `git branch -vv`
+	  master  8f6ad29 [origin/master] Update jyheo
+	* testing 16fbdb2 [origin/testing] hello
+```
+
+---
+## 브랜치 Push
+* 작업 한 내용을 원격지에 push
+```bash
+	$ `git push origin testing`
+	Username for 'https://github.com': jyheo
+	Password for 'https://jyheo@github.com':
+	Counting objects: 3, done.
+	Delta compression using up to 4 threads.
+	Compressing objects: 100% (2/2), done.
+	Writing objects: 100% (3/3), 256 bytes | 0 bytes/s, done.
+	Total 3 (delta 1), reused 0 (delta 0)
+	remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+	To https://github.com/jyheo/test.git
+	   daf25d2..16fbdb2  `testing -> testing`
+```
+	- $ git push -u origin testing
+		+ -u 옵션을 주면 현재 브랜치가 origin/testing의 트래킹 브랜치가 됨
+* $ git pull
+	- 트래킹 브랜치에 대해 자동으로 fetch/merge 수행
+
+---
+## Exercise
+* 2인 이상이 조를 이루어 실습
+* 조장이 Github에 저장소 새로 만들기(exercise2)
+	- README.md, LICENSE, .gitignore 함께 생성
+* 조원을 모두 collaborators로 등록
+	- Settings > Collaborators 에서 등록 할 수 있음
+* 각자 자신의 로컬 PC로 조장이 만든 exercise2 원격 저장소를 clone
+* 각자 자신의 이름으로 브랜치(예를 들어 james) 생성/변경
+* 자신의 이름으로 파일 생성, james.txt
+* 원격 저장소로 james 브랜치를 push
+
+---
+## Exercise (계속)
+* 원격 저장소의 최신 내용을 로컬로 가져옴(git fetch origin)
+* 다른 사람이 push한 브랜치를 확인(git branch -a)
+* 다른 사람이 push한 브랜치 하나(예를 들어 john)를 트래킹 브랜치로 생성(git checkout -b john origin/john)
+* john.txt를 적당히 수정/commit하고 push
+* 원격 저장소의 최신 내용을 가져오고 머지함(git pull 또는 git fetch origin, git merge origin)
+* Master 브랜치로 변경
+* Master 브랜치에 자신의 이름으로 만든 브랜치(james)를 merge
+* Master 브랜치 push
+	- 이때 순서에 따라 push가 거절될 수 있음. 그러면 다시 git fetch/merge하고 push
+
+    </textarea>
+    <!--<script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>-->
+	<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+        var slideshow = remark.create({
+          ratio: '16:9',
+          highlightStyle: 'github',
+          highlightLines: false,
+		  highlightSpans: true
+        });
+    </script>
+    <!--<script src="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.css">
+    <script>mermaid.initialize({startOnLoad:true});</script>-->
+  </body>
+</html>
