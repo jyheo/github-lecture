@@ -11,6 +11,7 @@ class: center, middle
 ## Git
 * 여러 사람이 동일한 문서(소스 코드)에 대해 동시에 작업을 해야할 때
 * 상대방의 작업을 방해하지 않으면서
+* 변경 이력을 남기면서
 * 효율적으로 작업할 수 있도록 도와줌
 * Distributed Version Control System(분산 버전 제어 시스템)
 	- 문서(소스 코드) 버전 관리(변경 이력 관리)
@@ -29,12 +30,21 @@ class: center, middle
 
 ---
 ## Git
-* Git에서 보는 파일의 세가지 상태
-	- Modified, Staged, Committed  
+* Git에서 보는 파일의 상태로
+	- Untracked File
+	- Tracked File
+		+ Modified, Staged, Committed  
 	<img src="images/git-3state.png">
 
 .footnote[출처: https://git-scm.com/book/en/v2/Getting-Started-Git-Basics]
 
+???
+* Untracked File: Git에서 관리되지 않는 파일, 새로 만들어져서 아직 Tracked를 하지 않았거나 일부러 제외한 파일들
+* Tracked File: Git에서 관리되는 파일
+* Committed: 변경 사항이 모두 저장소(Repository)에 저장된 상태, Unmodified라고도 함
+* Modified: Committed 이후에 파일이 변경된 상태
+* Staged: Modified 중에 Commit할 파일들을 Staging Area에 올려둔 상태
+  
 ---
 ## Git 설치
 * 다운로드: https://git-scm.com/download
@@ -51,6 +61,9 @@ class: center, middle
 	- $ git config --global user.email johndoe@example.com
 	- ‘--global’을 빼면 저장소마다 별도로 설정할 수 있음
 	- **공용 실습 컴퓨터에서 조심!**
+* 편집기 설정
+	- $ git config --global core.editor nano
+	- vi가 익숙하지 않은 사람은 편집기를 nano로 설정
 * $ git config --list
 ```bash
 	gui.recentrepo=/home/jyheo/pywsn
@@ -59,6 +72,10 @@ class: center, middle
 	user.name=Junyoung Heo
 	core.autocrlf=input
 ```
+
+???
+* 나중에 원격 저장소 접근을 위해 사용하는 ID/PWD와 git 저장소에서 사용되는 user.name, user.email과 혼동하지 않도록 조심!
+* git에서 종정 편집기를 자동으로 실행시키는데, 익숙한 에디터로 지정해두고 쓰면 좋다.
 
 ---
 ## Git help
@@ -79,7 +96,7 @@ class: center, middle
 	$ ls -a
 	.  ..  .git
 ```
-* 원격 서버 저장소에서 복제해오기(git clone [원격 주소])
+* 원격 저장소에서 복제해오기(git clone [원격 주소])
 ```bash
 	$ `git clone https://github.com/jyheo/test`
 	Cloning into 'test'...
@@ -91,6 +108,10 @@ class: center, middle
 	$ ls
 	LICENSE  README.md  fork_pull_request.c
 ```
+
+???
+* 로컬 저장소를 새로 만들거나,
+* 원격 저장소를 로컬로 복제하기
 
 ---
 ## 변경 이력 저장하기
@@ -177,9 +198,10 @@ class: center, middle
 ---
 ## 변경 이력 저장하기
 * 파일 삭제
-	- $ rm [파일 이름]              실제로 파일 삭제
-	- $ git rm [파일 이름]         삭제한 파일을 staged
-	- $ git commit                   삭제한 파일 committed
+	- $ git rm [파일 이름]
+		+ 파일을 삭제하고, 삭제한 파일을 staged
+	- $ git commit
+		+ 삭제한 파일 committed
 * 파일 이름 변경
 	- $ git mv [파일 이름] [새 파일 이름]
 	- $ git commit
@@ -312,6 +334,53 @@ $ `git stash drop`      [보관 장소 제거]
 ```
 
 ---
+## Write a Good Commit Message
+* 협업을 위해 중요함
+* 정보를 전달할 수 있도록, 간결하게
+* 써야할 내용이 정리가 잘 안된다면, 여러 건의 변경이나 버그 픽스가 섞여 있는 것임
+	- 이런 경우에 git add -p나 git add -e 로 commit할 내용을 줄여서 staged로 할 수 있음
+
+---
+## Write a Good Commit Message
+
+```c
+Capitalized, short (50 chars or less) summary
+
+More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so. In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body. The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the
+two together.
+
+Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
+ or "Fixes bug." This convention matches up with commit messages generated
+by commands like git merge and git revert.
+
+Further paragraphs come after blank lines.
+ - Bullet points are okay, too
+ - Typically a hyphen or asterisk is used for the bullet, followed by a
+   single space, with blank lines in between, but conventions vary here
+
+Issue: [#365](https://link/to/issue/365)
+```
+
+.footnote[http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html]
+
+???
+* 제목과 본문을 한 줄 띄워 분리하기
+* 제목은 영문 기준 50자 이내로
+* 제목 첫글자를 대문자로
+* 제목 끝에 . 금지
+* 제목은 명령조로
+* 본문은 영문 기준 72자마다 줄 바꾸기
+* 본문은 어떻게보다 무엇을, 왜에 맞춰 작성하기
+
+---
+## Exercise
+* https://try.github.io
+
+---
 * Exercise
 	* 로컬 저장소를 생성한다.(git init)
 	* .gitignore 파일을 만들고 .o와 a.out을 넣는다.
@@ -325,3 +394,4 @@ $ `git stash drop`      [보관 장소 제거]
 	* git diff 를 해본다.
 	* main.c 파일을 마지막 committed 상태로 되돌린다.
 	* 히스토리를 살펴본다.
+
