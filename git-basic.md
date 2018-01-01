@@ -184,8 +184,8 @@ class: center, middle
 	- 변경된 파일과 커맨트가 로컬 저장소에 저장됨
 * $ git commit 또는 $ git commit -m “커맨트”
 ```bash
-	$ `git commit -m "test"`
-	[master db3f718] test
+	$ `git commit -m "Add newfile"`
+	[master db3f718] Add newfile
 	 2 files changed, 2 insertions(+)
 	 create mode 100644 newfile
 	$ `git status`
@@ -239,13 +239,18 @@ class: center, middle
 
 ---
 ## 실수 바로잡기
+* 마지막 Commit을 취소하기
+	- $ git reset HEAD^
+		+ HEAD commit을 단순히 제거하는 방법으로 취소
+	- $ git revert HEAD
+		+ HEAD commit을 취소하는 commit을 추가로 만드는 것
 * 같이 Commit해야 할 파일을 실수로 빼고 commit 했을 때:
 	- $ git commit --amend
 ```bash
-		$ `git commit -m "test"`
+		$ `git commit -m "Add newfile"`
 		$ `git add forgotten`
 		$ `git commit --amend`
-		[master 26f6884] test
+		[master 26f6884] Add newfile
 		 Date: Tue Jan 3 06:09:27 2017 +0900
 		 3 files changed, 2 insertions(+)
 		 create mode 100644 forgotten
