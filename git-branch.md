@@ -63,8 +63,8 @@ $ `git branch -a`      브랜치 목록 보기
 ```bash
 	$ touch test.c
 	$ `git add test.c`
-	$ `git commit -m "added test.c"`
-	[testing `6888fc3`] added test.c
+	$ `git commit -m "Add test.c"`
+	[testing `6888fc3`] Add test.c
 	 1 file changed, 0 insertions(+), 0 deletions(-)
 	 create mode 100644 test.c
 ```
@@ -87,8 +87,8 @@ $ `git branch -a`      브랜치 목록 보기
 * Master 브랜치에서 커밋을 하면.
 ```bash
 	$ vi fork_pull_request.c
-	$ `git commit -a -m "new comment added"`
-	[master `f1f2a4c`] new comment added
+	$ `git commit -a -m "Add a new comment"`
+	[master `f1f2a4c`] Add a new comment
 	 1 file changed, 1 insertion(+)
 ```
 <img src="images/branch-commit3.png">
@@ -142,8 +142,8 @@ $ `git branch -a`      브랜치 목록 보기
 	$ `git checkout -b iss53`
 	Switched to a new branch 'iss53'
 	$ vi main.c
-	$ git commit -a -m "print hello"
-	[iss53 `C3`] print hello
+	$ git commit -a -m "Print hello"
+	[iss53 `C3`] Print hello
 	 1 file changed, 5 insertions(+)
 ```
 <img src="images/branch-ex1.png">
@@ -167,8 +167,8 @@ $ git checkout iss53
 	$ `git checkout -b hotfix`
 	Switched to a new branch 'hotfix'
 	$ vi main.c
-	$ `git commit -a -m "return 1"`
-	[hotfix `C4`] return 1
+	$ `git commit -a -m "Add return 1"`
+	[hotfix `C4`] Add return 1
 	 1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 <img src="images/branch-ex2.png">
@@ -196,8 +196,8 @@ Deleted branch hotfix (was eaa3e91).
 $ `git checkout iss53`
 Switched to branch 'iss53'
 $ vi main.c
-$ `git commit -a -m "print world"`
-[iss53 `C5`] print world
+$ `git commit -a -m "Print world"`
+[iss53 `C5`] Print world
  1 file changed, 1 insertion(+)
 ```
 <img src="images/branch-ex4.png" width=500px>
@@ -253,6 +253,59 @@ $ `git commit -a -m "print world"`
 	error: The branch 'testing' is not fully merged.
 	If you are sure you want to delete it, run 'git branch -D testing'.
 ```
+
+---
+## 브랜치 합치기 Rebase
+* Git에서 한 브랜치에서 다른 브랜치로 합치는 방법
+	- Merge
+	- Rebase
+* Rebase
+	- 보다 깨끗한 커밋 히스토리를 만들 수 있음
+		+ Merge와 달리 불필요한 merge용 커밋을 만들지 않음
+		+ 선형의 히스토리를 만듬
+* 주의 사항
+	- **공개 저장소에 이미 Push한 커밋을 Rebase하지 마라**
+	
+---
+## 브랜치 합치기 Rebase
+* Merge  
+<img src="images/branch-commit3.png" width=50%><img src="images/branch-commit4.png" width=50%>
+* Rebase
+```bash
+$ `git checkout testing`
+Switched to branch 'testing'
+$ `git rebase master`
+First, rewinding head to replay your work on top of it...
+Applying: Add test.c
+```
+
+<img src="images/branch-rebase.png" style="position:absolute;width:40%;right:50px;bottom:50px">
+
+---
+## 브랜치 합치기 Rebase
+* master를 Fast-forward시키면 합치기 끝
+```bash
+$ `git checkout master`
+Switched to branch 'master'
+$ `git merge testing`
+Updating f1f2a4c..4e521e3
+Fast-forward
+ test.c | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test.c
+```
+<img src="images/branch-rebase2.png" width=50%>
+
+---
+## 브랜치 합치기 Rebase
+* Rebase는 말 그대로 base를 바꾼다는 뜻.
+* 현재 브랜치에서 새로 만든 커밋들을 rebase할 대상 브랜치의 커밋들로 옮겨 놓는 것
+* Rebase의 다른 활용 예
+	- https://git-scm.com/book/ko/v1/Git-브랜치-Rebase하기#좀-더-Rebase
+
+---
+## Exercise
+* https://learngitbranching.js.org/
 
 ---
 ## Exercise
