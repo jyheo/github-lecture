@@ -185,18 +185,7 @@ class: center, middle
 	$ ls -a
 	.  ..  .git
 ```
-* 원격 저장소에서 복제해오기(git clone [원격 주소])
-```bash
-	$ `git clone https://github.com/jyheo/test`
-	Cloning into 'test'...
-	remote: Counting objects: 46, done.
-	remote: Total 46 (delta 0), reused 0 (delta 0), pack-reused 46
-	Unpacking objects: 100% (46/46), done.
-	Checking connectivity... done.
-	$ cd test
-	$ ls
-	LICENSE  README.md  fork_pull_request.c
-```
+
 
 ???
 * 로컬 저장소를 새로 만들거나,
@@ -212,76 +201,99 @@ class: center, middle
 .footnote[출처: https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository]
 
 ---
-## 변경 이력 저장하기
+## 변경 이력 저장하기(새 파일)
 * 새 파일 생성, tracked-staged로 변경
 ```bash
 	$ echo "newfile" > newfile
 	$ `git status`
-	On branch master
-	Your branch is up-to-date with 'origin/master'.
+	On branch master	
+	No commits yet
 	Untracked files:
-	  (use "git add <file>..." to include in what will be committed)
-
+	(use "git add <file>..." to include in what will be committed)
 		newfile
-
 	nothing added to commit but untracked files present (use "git add" to track)
 ```
 ```bash
 	$ `git add newfile`
 	$ `git status`
 	On branch master
-	Your branch is up-to-date with 'origin/master'.
+	No commits yet
 	Changes to be committed:
-	  (use "git reset HEAD <file>..." to unstage)
-
+	(use "git rm --cached <file>..." to unstage)
 		new file:   newfile
 ```
 
 ---
+## 변경 이력 저장하기(새 파일)
+* tracked-staged 파일을 committed로 변경
+```bash
+	$ `git commit -m "initial commit"`
+	[master (root-commit) 041682a] initial commit
+	 1 file changed, 1 insertion(+)
+	create mode 100644 newfile
+	$ `git status`
+	On branch master
+	nothing to commit, working tree clean
+```
+
+---
+## 변경 이력 저장하기(기존 파일)
 * tracked인 기존 파일 수정, staged로 변경,
 ```bash
-	$ vi README.md
+	$ vi newfile
 	$ `git status`
 	On branch master
-	Your branch is up-to-date with 'origin/master'.
-	Changes to be committed:
-	  (use "git reset HEAD <file>..." to unstage)
-
-		new file:   newfile
-
 	Changes not staged for commit:
-	  (use "git add <file>..." to update what will be committed)
-	  (use "git checkout -- <file>..." to discard changes in working directory)
-
-		modified:   README.md
+	(use "git add <file>..." to update what will be committed)
+	(use "git restore <file>..." to discard changes in working directory)
+		modified:   newfile
+	no changes added to commit (use "git add" and/or "git commit -a")
 ```
 ```bash
-	$ `git add README.md`
+	$ `git add newfile`
 	$ `git status`
 	On branch master
-	Your branch is up-to-date with 'origin/master'.
 	Changes to be committed:
-	  (use "git reset HEAD <file>..." to unstage)
-
-		modified:   README.md
-		new file:   newfile
+	(use "git restore --staged <file>..." to unstage)
+		modified:   newfile
 ```
 
 ---
-## 변경 이력 저장하기
+## 변경 이력 저장하기(기존 파일)
 * staged에서 committed로 변경
 	- 변경된 파일과 커맨트가 로컬 저장소에 저장됨
 * $ git commit 또는 $ git commit -m “커맨트”
 ```bash
-	$ `git commit -m "Add newfile"`
-	[master db3f718] Add newfile
-	 2 files changed, 2 insertions(+)
-	 create mode 100644 newfile
+	$ `git commit -m "Add some string"`
+	[master 4e50a68] Add some string
+	 1 file changed, 1 insertion(+)
 	$ `git status`
 	On branch master
-	Your branch is ahead of 'origin/master' by 1 commit.
-	  (use "git push" to publish your local commits)
-	nothing to commit, working directory clean
+	nothing to commit, working tree clean
+```
+
+---
+## 변경 이력 저장하기(2개이상 파일)
+* stage에 2개 이상의 파일 올리고 커밋하기
+```bash
+	$ echo "another file" > newfile2
+	$ vi newfile      
+	$ `git status`
+	On branch master
+	Changes not staged for commit:
+	(use "git add <file>..." to update what will be committed)
+	(use "git restore <file>..." to discard changes in working directory)
+		modified:   newfile
+	Untracked files:
+	(use "git add <file>..." to include in what will be committed)
+		newfile2
+	no changes added to commit (use "git add" and/or "git commit -a")
+	$ `git add newfile`
+	$ `git add newfile2`
+	$ `git commit -m "Add newfile2"`
+	[master 503f0b7] Add newfile2
+	2 files changed, 2 insertions(+)
+	create mode 100644 newfile2
 ```
 
 ---
