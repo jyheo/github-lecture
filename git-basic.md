@@ -96,18 +96,7 @@ class: center, middle
 	$ ls -a
 	.  ..  .git
 ```
-* 원격 저장소에서 복제해오기(git clone [원격 주소])
-```bash
-	$ `git clone https://github.com/jyheo/test`
-	Cloning into 'test'...
-	remote: Counting objects: 46, done.
-	remote: Total 46 (delta 0), reused 0 (delta 0), pack-reused 46
-	Unpacking objects: 100% (46/46), done.
-	Checking connectivity... done.
-	$ cd test
-	$ ls
-	LICENSE  README.md  fork_pull_request.c
-```
+
 
 ???
 * 로컬 저장소를 새로 만들거나,
