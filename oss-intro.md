@@ -13,7 +13,8 @@ class: center, middle
 * Open-source software may be **developed in a collaborative public manner.** According to scientists who studied it, open-source software is a prominent example of open collaboration.
 from Wikipedia
 * 오픈 소스 소프트웨어(open source software, OSS)는 **소스 코드를 공개해 누구나 특별한 제한 없이 그 코드를 보고 사용할 수 있는 오픈 소스 라이선스를 만족하는 소프트웨어를 말한다.** 통상 간략하게 오픈 소스라고 말하기도 한다.
-	- 출처: 위키피디아
+
+.footnote[출처: 위키피디아]
 
 ---
 ## 오픈 소스 소프트웨어 정의
@@ -24,7 +25,8 @@ from Wikipedia
 	- 소스 접근 가능, 컴파일 가능, 프로그래머가 이해/수정 가능한 형태
 * Derived Works
 	- 수정 및 재배포 가능
-* 출처: https://opensource.org/osd
+
+.footnote[출처: https://opensource.org/osd]
 
 ---
 ## OSS 장점
@@ -70,7 +72,8 @@ from Wikipedia
 	- 92% of developers say they prefer Git repositories
 	- 91% prefer to use the same development tools for work and personal projects
 	- 81% say it’s critical for organizations to use the latest development tools
-* 출처: https://page.gitlab.com/2016-Developer-Survey_2016-Developer-Survey.html
+
+.footnote[출처: https://page.gitlab.com/2016-Developer-Survey_2016-Developer-Survey.html]
 
 ---
 ## OSS 현황
@@ -86,7 +89,8 @@ from Wikipedia
 	- 운영체제, 데이터베이스, 개발 도구(73%가 Git 사용)
 * OSS를 통한 수익
 	- SaaS, 커스텀 개발, 서비스/지원
-* 출처: http://www.slideshare.net/blackducksoftware/2016-future-of-open-source-survey-results
+
+.footnote[출처: http://www.slideshare.net/blackducksoftware/2016-future-of-open-source-survey-results]
 
 ---
 ## OSS License
