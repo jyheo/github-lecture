@@ -217,8 +217,6 @@ class: center, middle
 * 파일 이름 변경
 	- $ git mv [파일 이름] [새 파일 이름]
 	- $ git commit
-* Staged/Committed를 동시에
-	- $ git commit -a -m “커맨트”
 
 ---
 ## 변경 이력 저장하기
@@ -272,53 +270,40 @@ class: center, middle
 ---
 ## 실수 바로잡기
 * Staged를 되돌리기
-	- $ git reset HEAD [파일 이름]
+	- $ git restore --staged [파일 이름]
 ```bash
 		$ `git add newfile2`
 		$ `git status`
 		On branch master
-		Your branch is ahead of 'origin/master' by 1 commit.
-		  (use "git push" to publish your local commits)
 		Changes to be committed:
-		  (use "git reset HEAD <file>..." to unstage)
-		.
-			new file:   newfile2
-		.
-		$ `git reset HEAD newfile2`
+		(use "git restore --staged <file>..." to unstage)
+			modified:   newfile2
+		$ `git restore --staged newfile2`
 		$ `git status`
 		On branch master
-		Your branch is ahead of 'origin/master' by 1 commit.
-		  (use "git push" to publish your local commits)
-		Untracked files:
-		  (use "git add <file>..." to include in what will be committed)
-		.
-			newfile2
-		.
-		nothing added to commit but untracked files present (use "git add" to track)
+		Changes not staged for commit:
+		(use "git add <file>..." to update what will be committed)
+		(use "git restore <file>..." to discard changes in working directory)
+			modified:   newfile2
+		no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
 ---
 ## 실수 바로잡기
 * Modified를 마지막 Commit 버전으로 되돌리기
-	- $ git checkout -- [파일 이름]
+	- $ git restore [파일 이름]
 ```bash
 		$ `git status`
-		On branch master
-		Your branch is ahead of 'origin/master' by 1 commit.
-		  (use "git push" to publish your local commits)
+		OOn branch master
 		Changes not staged for commit:
-		  (use "git add <file>..." to update what will be committed)
-		  (use "git checkout -- <file>..." to discard changes in working directory)
-		.
-			modified:   newfile
-		.
+		(use "git add <file>..." to update what will be committed)
+		(use "git restore <file>..." to discard changes in working directory)
+			modified:   newfile2
 		no changes added to commit (use "git add" and/or "git commit -a")
-		$ `git checkout -- newfile`
+		$ `git restore newfile2`
 		$ `git status`
 		On branch master
-		Your branch is ahead of 'origin/master' by 1 commit.
-		  (use "git push" to publish your local commits)
-		nothing to commit, working directory clean
+		nothing to commit, working tree clean
 ```
 
 ---
