@@ -1,37 +1,42 @@
-layout: true
-.top-line[]
-
 ---
-class: center, middle
+marp: true
+theme: my-theme
+paginate: true
+headingDivider: 2
+header: git/github - https://github.com/jyheo/github-lecture
+footer: 
+backgroundColor: #fff
+---
+
 # Git Remote Branch
-## Github
+<!-- _class: lead -->
+### Github
+### 허준영(jyheo@hansung.ac.kr)
 
-허준영(jyheo@hansung.ac.kr)
 
----
 ## 원격 브랜치 Remote Branch
 * 원격 브랜치는 단순히 원격 저장소의 브랜치를 가리키는 포인터  
-<img src="images/rbranch.png">
+![](images/rbranch.png)
 
-.footnote[출처: https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches]
+출처: https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches
 
----
+
 ## 원격 브랜치 Remote Branch
 * 내가 clone한 이후에 원격 저장소에 누군가 commit(31b8e, 190a3)을 push하였고, 나는 로컬 저장소에 commit(a38de, 893cf)을 수행하였음  
-<img src="images/rbranch2.png" width=70%>
+![](images/rbranch2.png)
 
----
+
 ## 원격 브랜치 Remote Branch
 * $ git fetch origin
 	- 원격지 origin의 최신 내용(커밋)을 가져옴  
-<img src="images/rbranch3.png">
+	![](images/rbranch3.png)
 	- 현재 브랜치(여기에서는 master)에 원격지에서 가져온 것을 머지하려면.
-	- $ git merge origin/master
+	- ``` $ git merge origin/master ```
 
----
+
 ## 브랜치 Push
 * 브랜치를 원격지에 올려서 공유하기
-```bash
+	```bash
 	$ `git branch testing`                                [로컬 브랜치]
 	$ `git checkout testing`
 	Switched to branch 'testing'
@@ -41,7 +46,7 @@ class: center, middle
 	[testing daf25d2] testfile added
 	 1 file changed, 0 insertions(+), 0 deletions(-)
 	 create mode 100644 testing
-	$ `git push origin testing`      [원격지 origin에 testing 브랜치 push]
+	$ `git push origin testing`                           [원격지 origin에 testing 브랜치 push]
 	Username for 'https://github.com': jyheo
 	Password for 'https://jyheo@github.com':
 	Counting objects: 3, done.
@@ -52,19 +57,19 @@ class: center, middle
 	remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
 	To https://github.com/jyheo/test.git
 	 * `[new branch]`      `testing -> testing`
-```
+	```
 
----
+
 ## 브랜치 Push
 * 원격지에 새로 testing 브랜치가 push된 것을 확인
-<img src="images/rbranch-push.png">
+![](images/rbranch-push.png)
 
----
+
 ## 브랜치 Push
 * 트래킹 브랜치
 	- 원격지의 브랜치로 작업하기
-* $ git checkout -b [로컬 브랜치] [원격 브랜치]
-```bash
+* ``` $ git checkout -b [로컬 브랜치] [원격 브랜치] ```
+	```bash
 	$ `git branch -a`
 	* master
 	  remotes/origin/HEAD -> origin/master
@@ -77,12 +82,12 @@ class: center, middle
 	$ `git branch -vv`
 	  master  8f6ad29 [origin/master] Update jyheo
 	* testing 16fbdb2 [origin/testing] hello
-```
+	```
 
----
+
 ## 브랜치 Push
 * 작업 한 내용을 원격지에 push
-```bash
+	```bash
 	$ `git push origin testing`
 	Username for 'https://github.com': jyheo
 	Password for 'https://jyheo@github.com':
@@ -94,13 +99,13 @@ class: center, middle
 	remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
 	To https://github.com/jyheo/test.git
 	   daf25d2..16fbdb2  `testing -> testing`
-```
-	- $ git push -u origin testing
+	```
+	- ``` $ git push -u origin testing ```
 		+ -u 옵션을 주면 현재 브랜치가 origin/testing의 트래킹 브랜치가 됨
-* $ git pull
+* ``` $ git pull ```
 	- 트래킹 브랜치에 대해 자동으로 fetch/merge 수행
 
----
+
 ## Exercise
 * 2인 이상이 조를 이루어 실습
 * 조장이 Github에 저장소 새로 만들기(exercise2)
@@ -112,7 +117,7 @@ class: center, middle
 * 자신의 이름으로 파일 생성, james.txt
 * 원격 저장소로 james 브랜치를 push
 
----
+
 ## Exercise (계속)
 * 원격 저장소의 최신 내용을 로컬로 가져옴(git fetch origin)
 * 다른 사람이 push한 브랜치를 확인(git branch -a)
