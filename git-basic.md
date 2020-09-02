@@ -40,8 +40,7 @@ backgroundColor: #fff
 	- Tracked File
 		+ Modified, Staged, Committed  
 	![](images/git-3state.png)
-
-출처: https://git-scm.com/book/en/v2/Getting-Started-Git-Basics
+		+ 출처: https://git-scm.com/book/en/v2/Getting-Started-Git-Basics
 
 <!--
 * Untracked File: Git에서 관리되지 않는 파일, 새로 만들어져서 아직 Tracked를 하지 않았거나 일부러 제외한 파일들
@@ -57,7 +56,7 @@ backgroundColor: #fff
 	- 데비안 계열: $ sudo apt-get install git-all
 	- Fedora 배포판: $ sudo yum install git-all
 * GUI: git-gui, SourceTree  
-![](images/git-gui.png)![](images/sourcetree.png)
+![](images/git-gui.png) ![](images/sourcetree.png)
 
 
 ## Git 설정
@@ -90,18 +89,17 @@ backgroundColor: #fff
 
 
 ## Git 저장소 만들기
-* 로컬 디렉터리에 저장소 새로 만들기(git init)
+* 로컬 디렉터리에 저장소 새로 만들기(``` git init ``` )
 	```bash
 	$ mkdir my_proj
 	$ cd my_proj/
 	$ ls
-	$ `git init`
+	$ git init
 	Initialized empty Git repository in /home/jyheo/my_proj/.git/
 	$ ls
 	$ ls -a
 	.  ..  .git
 	```
-
 
 <!--
 * 로컬 저장소를 새로 만들거나,
@@ -113,15 +111,14 @@ backgroundColor: #fff
 * Tracked 파일: Unmodified(Committed), Modified, Staged
 * $ git status  
 ![](images/git-status.png)
-
-출처: https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
+	- 출처: https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
 
 
 ## 변경 이력 저장하기(새 파일)
 * 새 파일 생성, tracked-staged로 변경
 	```bash
 	$ echo "newfile" > newfile
-	$ `git status`
+	$ git status
 	On branch master	
 	No commits yet
 	Untracked files:
@@ -130,8 +127,8 @@ backgroundColor: #fff
 	nothing added to commit but untracked files present (use "git add" to track)
 	```
 	```bash
-	$ `git add newfile`
-	$ `git status`
+	$ git add newfile
+	$ git status
 	On branch master
 	No commits yet
 	Changes to be committed:
@@ -143,11 +140,11 @@ backgroundColor: #fff
 ## 변경 이력 저장하기(새 파일)
 * tracked-staged 파일을 committed로 변경
 	```bash
-	$ `git commit -m "initial commit"`
+	$ git commit -m "initial commit"
 	[master (root-commit) 041682a] initial commit
 		1 file changed, 1 insertion(+)
 	create mode 100644 newfile
-	$ `git status`
+	$ git status
 	On branch master
 	nothing to commit, working tree clean
 	```
@@ -157,7 +154,7 @@ backgroundColor: #fff
 * tracked인 기존 파일 수정, staged로 변경,
 	```bash
 	$ vi newfile
-	$ `git status`
+	$ git status
 	On branch master
 	Changes not staged for commit:
 	(use "git add <file>..." to update what will be committed)
@@ -166,8 +163,8 @@ backgroundColor: #fff
 	no changes added to commit (use "git add" and/or "git commit -a")
 	```
 	```bash
-	$ `git add newfile`
-	$ `git status`
+	$ git add newfile
+	$ git status
 	On branch master
 	Changes to be committed:
 	(use "git restore --staged <file>..." to unstage)
@@ -180,10 +177,10 @@ backgroundColor: #fff
 	- 변경된 파일과 커맨트가 로컬 저장소에 저장됨
 * $ git commit 또는 $ git commit -m “커맨트”
 	```bash
-	$ `git commit -m "Add some string"`
+	$ git commit -m "Add some string"
 	[master 4e50a68] Add some string
 		1 file changed, 1 insertion(+)
-	$ `git status`
+	$ git status
 	On branch master
 	nothing to commit, working tree clean
 	```
@@ -194,7 +191,7 @@ backgroundColor: #fff
 	```bash
 	$ echo "another file" > newfile2
 	$ vi newfile      
-	$ `git status`
+	$ git status
 	On branch master
 	Changes not staged for commit:
 	(use "git add <file>..." to update what will be committed)
@@ -204,9 +201,9 @@ backgroundColor: #fff
 	(use "git add <file>..." to include in what will be committed)
 		newfile2
 	no changes added to commit (use "git add" and/or "git commit -a")
-	$ `git add newfile`
-	$ `git add newfile2`
-	$ `git commit -m "Add newfile2"`
+	$ git add newfile
+	$ git add newfile2
+	$ git commit -m "Add newfile2"
 	[master 503f0b7] Add newfile2
 	2 files changed, 2 insertions(+)
 	create mode 100644 newfile2
@@ -215,23 +212,23 @@ backgroundColor: #fff
 
 ## 변경 이력 저장하기
 * 파일 삭제
-	- $ git rm [파일 이름]
+	- ``` $ git rm [파일 이름] ```
 		+ 파일을 삭제하고, 삭제한 파일을 staged
-	- $ git commit
+	- ``` $ git commit ```
 		+ 삭제한 파일 committed
 * 파일 이름 변경
-	- $ git mv [파일 이름] [새 파일 이름]
-	- $ git commit
+	- ``` $ git mv [파일 이름] [새 파일 이름] ```
+	- ``` $ git commit ```
 
 
 ## 변경 이력 저장하기
-* $ git diff
+* ``` $ git diff ```
 	- Modified 파일의 변경된 부분을 보여줌
-* $ git diff –staged
+* ``` $ git diff –staged ```
 	- Staged 파일의 변경된 부분을 보여줌
-* .gitignore
+* ``` .gitignore ```
 	- git이 자동으로 tracked하지 않을 파일들을 지정
-	```txt
+	```
 	# no .a files
 	*.a
 	# but do track lib.a, even though you're ignoring .a files above
@@ -248,19 +245,19 @@ backgroundColor: #fff
 
 
 ## Git 히스토리
-* $ git log
+* ``` $ git log ```
 * GUI 버전 권장!  
 ![](images/history.png)
 
 
 ## 실수 바로잡기
 * 마지막 Commit을 취소하기
-	- $ git reset HEAD^
+	- ``` $ git reset HEAD^ ```
 		+ HEAD commit을 단순히 제거하는 방법으로 취소
-	- $ git revert HEAD
+	- ``` $ git revert HEAD ```
 		+ HEAD commit을 취소하는 commit을 추가로 만드는 것
 * 같이 Commit해야 할 파일을 실수로 빼고 commit 했을 때:
-	- $ git commit --amend
+	- ``` $ git commit --amend ```
 	```bash
 	$ `git commit -m "Add newfile"`
 	$ `git add forgotten`
@@ -275,16 +272,16 @@ backgroundColor: #fff
 
 ## 실수 바로잡기
 * Staged를 되돌리기
-	- $ git restore --staged [파일 이름]
+	- ``` $ git restore --staged [파일 이름] ```
 	```bash
-	$ `git add newfile2`
-	$ `git status`
+	$ git add newfile2
+	$ git status
 	On branch master
 	Changes to be committed:
 	(use "git restore --staged <file>..." to unstage)
 		modified:   newfile2
-	$ `git restore --staged newfile2`
-	$ `git status`
+	$ git restore --staged newfile2
+	$ git status
 	On branch master
 	Changes not staged for commit:
 	(use "git add <file>..." to update what will be committed)
@@ -296,17 +293,17 @@ backgroundColor: #fff
 
 ## 실수 바로잡기
 * Modified를 마지막 Commit 버전으로 되돌리기
-	- $ git restore [파일 이름]
+	- ``` $ git restore [파일 이름] ```
 	```bash
-	$ `git status`
+	$ git status
 	OOn branch master
 	Changes not staged for commit:
 	(use "git add <file>..." to update what will be committed)
 	(use "git restore <file>..." to discard changes in working directory)
 		modified:   newfile2
 	no changes added to commit (use "git add" and/or "git commit -a")
-	$ `git restore newfile2`
-	$ `git status`
+	$ git restore newfile2
+	$ git status
 	On branch master
 	nothing to commit, working tree clean
 	```
@@ -318,9 +315,9 @@ backgroundColor: #fff
 	- Staged 상태 파일들은 복구될 때 Staging Area에서 내려감
 * 아직 끝나지 않은 수정사항을 스택에 잠시 저장했다가 나중에 다시 적용할 수 있음
 	```bash
-	$ `git stash`           [Commit하지 않은 파일들을 보관]
-	$ `git stash apply`     [보관한 파일들을 복구]
-	$ `git stash drop`      [보관 장소 제거]
+	$ git stash           [Commit하지 않은 파일들을 보관]
+	$ git stash apply     [보관한 파일들을 복구]
+	$ git stash drop      [보관 장소 제거]
 	```
 
 
@@ -328,14 +325,14 @@ backgroundColor: #fff
 * 태깅 – 태그 달기
 	- Annotated Tag: 태거 이름, 이메일, 날짜, 커맨트 등을 함께 저장, -a 옵션 사용
 	- Lightweight Tag: 단순 태깅
-	- $ git tag [-a] [태그 이름] [기타 옵션]
+	- ``` $ git tag [-a] [태그 이름] [기타 옵션] ```
 	```bash
-	$ `git tag`
-	$ `git tag -a v1.0 -m "my version 1.0"`
-	$ `git tag`
+	$ git tag
+	$ git tag -a v1.0 -m "my version 1.0"
+	$ git tag
 	v1.0
-	$ `git tag v1.0-lw`
-	$ `git tag`
+	$ git tag v1.0-lw
+	$ git tag
 	v1.0
 	v1.0-lw
 	```
@@ -350,7 +347,7 @@ backgroundColor: #fff
 
 ## Write a Good Commit Message
 
-```c
+```txt
 Capitalized, short (50 chars or less) summary
 
 More detailed explanatory text, if necessary.  Wrap it to about 72
@@ -371,8 +368,7 @@ Further paragraphs come after blank lines.
 
 Issue: [#365](https://link/to/issue/365)
 ```
-
-출처: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+* 출처: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 
 <!--
 * 제목과 본문을 한 줄 띄워 분리하기

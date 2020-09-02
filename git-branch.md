@@ -29,21 +29,21 @@ backgroundColor: #fff
 * HEAD
 	- 현재 사용중인 브랜치의 가장 최근 커밋을 가리키는 포인터
 	```bash
-	$ `git branch -a`      브랜치 목록 보기
+	$ git branch -a      브랜치 목록 보기
 	* master
-	remotes/origin/HEAD -> origin/master
-	remotes/origin/master
-	remotes/origin/new
+	  remotes/origin/HEAD -> origin/master
+	  remotes/origin/master
+	  remotes/origin/new
 	```
 
 
 ## 브랜치 생성
 * $ git branch [브랜치 이름]
 	```bash
-	$ `git branch testing`
-	$ `git branch -a`
+	$ git branch testing
+	$ git branch -a
 	* master
-		testing  
+	  testing  
 	```
 	![](images/branch-create.png)
 * Git 내부에서 브랜치는 커밋을 가리키는 포인터로 관리됨
@@ -53,10 +53,10 @@ backgroundColor: #fff
 * 현재 작업 중인 브랜치를 다른 것으로 변경
 	- $ git checkout [브랜치_이름]
 	```bash
-	$ `git checkout testing`
+	$ git checkout testing
 	Switched to branch 'testing'
-	$ `git branch -a`
-		master
+	$ git branch -a
+	  master
 	* testing
 	```
 	![](images/branch-checkout.png)
@@ -66,8 +66,8 @@ backgroundColor: #fff
 * 변경된 브랜치(testing)에서 커밋을 하면.
 	```bash
 	$ touch test.c
-	$ `git add test.c`
-	$ `git commit -m "Add test.c"`
+	$ git add test.c
+	$ git commit -m "Add test.c"
 	[testing `6888fc3`] Add test.c
 	 1 file changed, 0 insertions(+), 0 deletions(-)
 	 create mode 100644 test.c
@@ -78,7 +78,7 @@ backgroundColor: #fff
 ## 작업 브랜치 변경
 * 다시 master 브랜치로 변경
 	```bash
-	$ `git checkout master`
+	$ git checkout master
 	Switched to branch 'master'
 	Your branch is up-to-date with 'origin/master'.
 	```
@@ -91,7 +91,7 @@ backgroundColor: #fff
 * Master 브랜치에서 커밋을 하면.
 	```bash
 	$ vi fork_pull_request.c
-	$ `git commit -a -m "Add a new comment"`
+	$ git commit -a -m "Add a new comment"
 	[master `f1f2a4c`] Add a new comment
 	 1 file changed, 1 insertion(+)
 	```
@@ -102,10 +102,10 @@ backgroundColor: #fff
 * $ git merge [현재 브랜치에 합칠 브랜치]
 	- master 브랜치에 testing 브랜치 내용을 합침
 	```bash
-	$ `git branch`
+	$ git branch
 	* master
-		testing
-	$ `git merge testing`
+	  testing
+	$ git merge testing
 	Merge made by the 'recursive' strategy.
 		test.c | 0
 		1 file changed, 0 insertions(+), 0 deletions(-)
@@ -118,8 +118,8 @@ backgroundColor: #fff
 ## 브랜치 합치기 Merge
 * Merge한 결과는.
 	```bash
-	$ `git log --oneline --decorate --graph --all`
-	*   `1d4fa7c` (HEAD -> master) Merge branch 'testing'
+	$ git log --oneline --decorate --graph --all
+	*   1d4fa7c (HEAD -> master) Merge branch 'testing'
 	|\  
 	| * 6888fc3 (testing) added test.c
 	* | f1f2a4c new comment added
@@ -147,7 +147,7 @@ backgroundColor: #fff
 	Switched to a new branch 'iss53'
 	$ vi main.c
 	$ git commit -a -m "Print hello"
-	[iss53 `C3`] Print hello
+	[iss53 C3] Print hello
 	 1 file changed, 5 insertions(+)
 	```
 	![](images/branch-ex1.png)
@@ -158,13 +158,13 @@ backgroundColor: #fff
 ## 브랜치&머지 예제
 * 제품 버그 수정을 위해 master 브랜치로 변경하고 hotfix 브랜치 생성, 버그 수정
 	```bash
-	$ `git checkout master`
+	$ git checkout master
 	Switched to branch 'master'
-	$ `git checkout -b hotfix`
+	$ git checkout -b hotfix
 	Switched to a new branch 'hotfix'
 	$ vi main.c
-	$ `git commit -a -m "Add return 1"`
-	[hotfix `C4`] Add return 1
+	$ git commit -a -m "Add return 1"
+	[hotfix C4] Add return 1
 	 1 file changed, 1 insertion(+), 1 deletion(-)
 	```
 	![](images/branch-ex2.png)
@@ -173,9 +173,9 @@ backgroundColor: #fff
 ## 브랜치&머지 예제
 * 버그 수정한 hotfix 브랜치를 테스트 완료 후 hotfix 브랜치를 master 브랜치로 머지
 	```bash
-	$ `git checkout master`
+	$ git checkout master
 	Switched to branch 'master'
-	$ `git merge hotfix`
+	$ git merge hotfix
 	Updating b117ce3..eaa3e91
 	Fast-forward
 	 main.c | 2 +-
@@ -187,13 +187,13 @@ backgroundColor: #fff
 ## 브랜치&머지 예제
 * 불필요한 hotfix 브랜치를 제거하고 이전에 하던 작업 iss53으로 돌아가서 새 기능 추가 진행
 	```bash
-	$ `git branch -d hotfix`           [-d 옵션은 브랜치 삭제]
+	$ git branch -d hotfix           [-d 옵션은 브랜치 삭제]
 	Deleted branch hotfix (was eaa3e91).
-	$ `git checkout iss53`
+	$ git checkout iss53
 	Switched to branch 'iss53'
 	$ vi main.c
-	$ `git commit -a -m "Print world"`
-	[iss53 `C5`] Print world
+	$ git commit -a -m "Print world"
+	[iss53 C5] Print world
 	1 file changed, 1 insertion(+)
 	```
 	![w:500px](images/branch-ex4.png)
@@ -202,11 +202,11 @@ backgroundColor: #fff
 ## 브랜치&머지 예제
 * 새 기능 추가 iss53 작업을 완료하고 master로 머지 시키기
 	```bash
-	$ `git checkout master`
+	$ git checkout master
 	Switched to branch 'master'
-	$ `git merge iss53`
+	$ git merge iss53
 	Auto-merging main.c
-	CONFLICT (content): `Merge conflict in main.c`
+	CONFLICT (content): Merge conflict in main.c
 	Automatic merge failed; fix conflicts and then commit the result.
 	```
 * 가끔 이렇게 Conflict가 나는 경우가 생김
@@ -220,8 +220,8 @@ backgroundColor: #fff
 	- 해당 파일을 열어보면 어디에서 conflict가 발생 했는지 확인 가능. 파일 수정하여 해결 후 커밋.  
 	![](images/branch-ex5.png)
 	```bash
-	$ `git -a commit`
-	[master `C6`] Merge branch 'iss53'
+	$ git -a commit
+	[master C6] Merge branch 'iss53'
 	```
 	![w:500px](images/branch-ex6.png)
 
@@ -232,20 +232,20 @@ backgroundColor: #fff
 ## 브랜치&머지 예제
 * 브랜치 관리
 	```bash
-	$ `git branch`                        [브랜치를 모두 보여줌]
+	$ git branch                         [브랜치를 모두 보여줌]
 	  iss53
 	* master
 	  testing
-	$ `git branch -v`                    [각 브랜치의 마지막 커밋]
+	$ git branch -v                    [각 브랜치의 마지막 커밋]
 	  iss53   2f788e8 return -1
 	* master  5d9b98a Merge branch 'iss53'
 	  testing ac33802 test
-	$ `git branch –merged`        [현재 브랜치에 머지된 것만 보여줌]
+	$ git branch –merged               [현재 브랜치에 머지된 것만 보여줌]
 	  iss53
 	* master
-	$ `git branch –no-merged`    [현재 브랜치에 머지 안된 것만]
+	$ git branch –no-merged            [현재 브랜치에 머지 안된 것만]
 	  testing
-	$ `git branch -d testing`        [머지가 안된 브랜치는 삭제 안됨]
+	$ git branch -d testing            [머지가 안된 브랜치는 삭제 안됨]
 	error: The branch 'testing' is not fully merged.
 	If you are sure you want to delete it, run 'git branch -D testing'.
 	```
