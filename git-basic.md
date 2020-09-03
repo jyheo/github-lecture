@@ -14,28 +14,28 @@ backgroundColor: #fff
 
 
 ## Git
-* 여러 사람이 동일한 문서(소스 코드)에 대해 동시에 작업을 해야할 때
-* 상대방의 작업을 방해하지 않으면서
-* 변경 이력을 남기면서
-* 효율적으로 작업할 수 있도록 도와줌
-* Distributed Version Control System(분산 버전 제어 시스템)
+- 여러 사람이 동일한 문서(소스 코드)에 대해 동시에 작업을 해야할 때
+- 상대방의 작업을 방해하지 않으면서
+- 변경 이력을 남기면서
+- 효율적으로 작업할 수 있도록 도와줌
+- Distributed Version Control System(분산 버전 제어 시스템)
 	- 문서(소스 코드) 버전 관리(변경 이력 관리)
 	- 분산형 시스템: 개인 저장소와 공유 저장소
 
 
 ## Git
-* 작업 공간 Working directory
+- 작업 공간 Working directory
 	- 편집할 파일(소스 코드)이 저장되어 있는 디렉터리
-* 스테이지 Staging Area
+- 스테이지 Staging Area
 	- 저장소(Repository)로 변경 내역을 저장하기 위한 파일들의 목록
-* 저장소 Repository
+- 저장소 Repository
 	- 로컬 저장소: 보통 작업 공간에 .git 라는 이름의 디렉터리로 존재, 변경 내역이 저장되는 곳
 	- 원격 저장소: 여러 사용자가 공유하는 저장소
 		+ Github, Bitbucket
 
 
 ## Git
-* Git에서 보는 파일의 상태로
+- Git에서 보는 파일의 상태로
 	- Untracked File
 	- Tracked File
 		+ Modified, Staged, Committed  
@@ -43,32 +43,32 @@ backgroundColor: #fff
 		+ 출처: https://git-scm.com/book/en/v2/Getting-Started-Git-Basics
 
 <!--
-* Untracked File: Git에서 관리되지 않는 파일, 새로 만들어져서 아직 Tracked를 하지 않았거나 일부러 제외한 파일들
-* Tracked File: Git에서 관리되는 파일
-* Committed: 변경 사항이 모두 저장소(Repository)에 저장된 상태, Unmodified라고도 함
-* Modified: Committed 이후에 파일이 변경된 상태
-* Staged: Modified 중에 Commit할 파일들을 Staging Area에 올려둔 상태
+- Untracked File: Git에서 관리되지 않는 파일, 새로 만들어져서 아직 Tracked를 하지 않았거나 일부러 제외한 파일들
+- Tracked File: Git에서 관리되는 파일
+- Committed: 변경 사항이 모두 저장소(Repository)에 저장된 상태, Unmodified라고도 함
+- Modified: Committed 이후에 파일이 변경된 상태
+- Staged: Modified 중에 Commit할 파일들을 Staging Area에 올려둔 상태
   -->
 
 ## Git 설치
-* 다운로드: https://git-scm.com/download
-* 리눅스의 경우 배포판에 따라
+- 다운로드: https://git-scm.com/download
+- 리눅스의 경우 배포판에 따라
 	- 데비안 계열: $ sudo apt-get install git-all
 	- Fedora 배포판: $ sudo yum install git-all
-* GUI: git-gui, SourceTree  
+- GUI: git-gui, SourceTree  
 ![](images/git-gui.png) ![](images/sourcetree.png)
 
 
 ## Git 설정
-* 사용자 설정
+- 사용자 설정
 	- ``` $ git config --global user.name "John Doe" ```
 	- ``` $ git config --global user.email johndoe@example.com ```
 	- ```--global``` 을 빼면 저장소마다 별도로 설정할 수 있음
 	- **공용 실습 컴퓨터에서 조심!**
-* 편집기 설정
+- 편집기 설정
 	- ``` $ git config --global core.editor nano ```
 	- vi가 익숙하지 않은 사람은 편집기를 nano로 설정
-* ``` $ git config --list ```
+- ``` $ git config --list ```
 	```bash
 	gui.recentrepo=/home/jyheo/pywsn
 	gui.recentrepo=/home/jyheo/AndroidProjects/AndroidTutorial
@@ -78,18 +78,18 @@ backgroundColor: #fff
 	```
 
 <!--
-* 나중에 원격 저장소 접근을 위해 사용하는 ID/PWD와 git 저장소에서 사용되는 user.name, user.email과 혼동하지 않도록 조심!
-* git에서 종정 편집기를 자동으로 실행시키는데, 익숙한 에디터로 지정해두고 쓰면 좋다.
+- 나중에 원격 저장소 접근을 위해 사용하는 ID/PWD와 git 저장소에서 사용되는 user.name, user.email과 혼동하지 않도록 조심!
+- git에서 종정 편집기를 자동으로 실행시키는데, 익숙한 에디터로 지정해두고 쓰면 좋다.
 -->
 
 ## Git help
-* ``` $ git help ```
-* ``` $ git help config ```
+- ``` $ git help ```
+- ``` $ git help config ```
 	![](images/git-help-config.png)
 
 
 ## Git 저장소 만들기
-* 로컬 디렉터리에 저장소 새로 만들기(``` git init ``` )
+- 로컬 디렉터리에 저장소 새로 만들기(``` git init ``` )
 	```bash
 	$ mkdir my_proj
 	$ cd my_proj/
@@ -102,20 +102,20 @@ backgroundColor: #fff
 	```
 
 <!--
-* 로컬 저장소를 새로 만들거나,
-* 원격 저장소를 로컬로 복제하기
+- 로컬 저장소를 새로 만들거나,
+- 원격 저장소를 로컬로 복제하기
 -->
 
 ## 변경 이력 저장하기
-* 작업 디렉터리 내의 파일 Untracked/Tracked
-* Tracked 파일: Unmodified(Committed), Modified, Staged
-* $ git status  
+- 작업 디렉터리 내의 파일 Untracked/Tracked
+- Tracked 파일: Unmodified(Committed), Modified, Staged
+- $ git status  
 ![](images/git-status.png)
 	- 출처: https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
 
 
 ## 변경 이력 저장하기(새 파일)
-* 새 파일 생성, tracked-staged로 변경
+- 새 파일 생성, tracked-staged로 변경
 	```bash
 	$ echo "newfile" > newfile
 	$ git status
@@ -138,7 +138,7 @@ backgroundColor: #fff
 
 
 ## 변경 이력 저장하기(새 파일)
-* tracked-staged 파일을 committed로 변경
+- tracked-staged 파일을 committed로 변경
 	```bash
 	$ git commit -m "initial commit"
 	[master (root-commit) 041682a] initial commit
@@ -151,7 +151,7 @@ backgroundColor: #fff
 
 
 ## 변경 이력 저장하기(기존 파일)
-* tracked인 기존 파일 수정, staged로 변경,
+- tracked인 기존 파일 수정, staged로 변경,
 	```bash
 	$ vi newfile
 	$ git status
@@ -173,9 +173,9 @@ backgroundColor: #fff
 
 
 ## 변경 이력 저장하기(기존 파일)
-* staged에서 committed로 변경
+- staged에서 committed로 변경
 	- 변경된 파일과 커맨트가 로컬 저장소에 저장됨
-* $ git commit 또는 $ git commit -m “커맨트”
+- $ git commit 또는 $ git commit -m “커맨트”
 	```bash
 	$ git commit -m "Add some string"
 	[master 4e50a68] Add some string
@@ -187,7 +187,7 @@ backgroundColor: #fff
 
 
 ## 변경 이력 저장하기(2개이상 파일)
-* stage에 2개 이상의 파일 올리고 커밋하기
+- stage에 2개 이상의 파일 올리고 커밋하기
 	```bash
 	$ echo "another file" > newfile2
 	$ vi newfile      
@@ -211,22 +211,22 @@ backgroundColor: #fff
 
 
 ## 변경 이력 저장하기
-* 파일 삭제
+- 파일 삭제
 	- ``` $ git rm [파일 이름] ```
 		+ 파일을 삭제하고, 삭제한 파일을 staged
 	- ``` $ git commit ```
 		+ 삭제한 파일 committed
-* 파일 이름 변경
+- 파일 이름 변경
 	- ``` $ git mv [파일 이름] [새 파일 이름] ```
 	- ``` $ git commit ```
 
 
 ## 변경 이력 저장하기
-* ``` $ git diff ```
+- ``` $ git diff ```
 	- Modified 파일의 변경된 부분을 보여줌
-* ``` $ git diff –staged ```
+- ``` $ git diff –staged ```
 	- Staged 파일의 변경된 부분을 보여줌
-* ``` .gitignore ```
+- ``` .gitignore ```
 	- git이 자동으로 tracked하지 않을 파일들을 지정
 	```
 	# no .a files
@@ -245,18 +245,18 @@ backgroundColor: #fff
 
 
 ## Git 히스토리
-* ``` $ git log ```
-* GUI 버전 권장!  
+- ``` $ git log ```
+- GUI 버전 권장!  
 ![](images/history.png)
 
 
 ## 실수 바로잡기
-* 마지막 Commit을 취소하기
+- 마지막 Commit을 취소하기
 	- ``` $ git reset HEAD^ ```
 		+ HEAD commit을 단순히 제거하는 방법으로 취소
 	- ``` $ git revert HEAD ```
 		+ HEAD commit을 취소하는 commit을 추가로 만드는 것
-* 같이 Commit해야 할 파일을 실수로 빼고 commit 했을 때:
+- 같이 Commit해야 할 파일을 실수로 빼고 commit 했을 때:
 	- ``` $ git commit --amend ```
 	```bash
 	$ git commit -m "Add newfile"
@@ -271,7 +271,7 @@ backgroundColor: #fff
 
 
 ## 실수 바로잡기
-* Staged를 되돌리기
+- Staged를 되돌리기
 	- ``` $ git restore --staged [파일 이름] ```
 	```bash
 	$ git add newfile2
@@ -292,7 +292,7 @@ backgroundColor: #fff
 
 
 ## 실수 바로잡기
-* Modified를 마지막 Commit 버전으로 되돌리기
+- Modified를 마지막 Commit 버전으로 되돌리기
 	- ``` $ git restore [파일 이름] ```
 	```bash
 	$ git status
@@ -311,7 +311,7 @@ backgroundColor: #fff
 
 
 ## Tagging
-* 태깅 – 태그 달기
+- 태깅 – 태그 달기
 	- Annotated Tag: 태거 이름, 이메일, 날짜, 커맨트 등을 함께 저장, -a 옵션 사용
 	- Lightweight Tag: 단순 태깅
 	- ``` $ git tag [-a] [태그 이름] [기타 옵션] ```
@@ -328,9 +328,9 @@ backgroundColor: #fff
 
 
 ## Write a Good Commit Message
-* 협업을 위해 중요함
-* 정보를 전달할 수 있도록, 간결하게
-* 써야할 내용이 정리가 잘 안된다면, 여러 건의 변경이나 버그 픽스가 섞여 있는 것임
+- 협업을 위해 중요함
+- 정보를 전달할 수 있도록, 간결하게
+- 써야할 내용이 정리가 잘 안된다면, 여러 건의 변경이나 버그 픽스가 섞여 있는 것임
 	- 이런 경우에 git add -p나 git add -e 로 commit할 내용을 줄여서 staged로 할 수 있음
 
 
@@ -357,36 +357,36 @@ Further paragraphs come after blank lines.
 
 Issue: [#365](https://link/to/issue/365)
 ```
-* 출처: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+- 출처: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 
 
 ## Write a Good Commit Message
 
-* 제목과 본문을 한 줄 띄워 분리하기
-* 제목은 영문 기준 50자 이내로
-* 제목 첫글자를 대문자로
-* 제목 끝에 . 금지
-* 제목은 명령조로
-* 본문은 영문 기준 72자마다 줄 바꾸기
-* 본문은 어떻게보다 무엇을, 왜에 맞춰 작성하기
+- 제목과 본문을 한 줄 띄워 분리하기
+- 제목은 영문 기준 50자 이내로
+- 제목 첫글자를 대문자로
+- 제목 끝에 . 금지
+- 제목은 명령조로
+- 본문은 영문 기준 72자마다 줄 바꾸기
+- 본문은 어떻게보다 무엇을, 왜에 맞춰 작성하기
 
 
 ## Exercise
-* https://try.github.io
+- https://try.github.io
 
 ## Exercise(계속)
 
-* Exercise
-	* 로컬 저장소를 생성한다.(git init)
-	* .gitignore 파일을 만들고 .o와 a.out을 넣는다.
-	* .gitignore 파일을 staged/committed 한다.
-	* main.c 파일을 만들고 staged/committed 한다. (이후 main.c를 수정할 때마다 gcc로 컴파일 한다.)
-	* main.c 파일에 main() 함수를 추가하고 staged/committed 한다.
-	* 태깅을 해본다. 태그 이름은 v1.0 으로 하자.
-	* main.c 파일에 multiplication_table() 함수를 추가하고 staged/committed 한다. (구구단 함수)
-	* main.c 파일 main() 함수에서 multiplication_table() 함수를 호출하도록 수정하고 staged/committed 한다.
-	* main.c 파일을 임의로 수정한다.
-	* git diff 를 해본다.
-	* main.c 파일을 마지막 committed 상태로 되돌린다.
-	* 히스토리를 살펴본다.
+- Exercise
+	- 로컬 저장소를 생성한다.(git init)
+	- .gitignore 파일을 만들고 .o와 a.out을 넣는다.
+	- .gitignore 파일을 staged/committed 한다.
+	- main.c 파일을 만들고 staged/committed 한다. (이후 main.c를 수정할 때마다 gcc로 컴파일 한다.)
+	- main.c 파일에 main() 함수를 추가하고 staged/committed 한다.
+	- 태깅을 해본다. 태그 이름은 v1.0 으로 하자.
+	- main.c 파일에 multiplication_table() 함수를 추가하고 staged/committed 한다. (구구단 함수)
+	- main.c 파일 main() 함수에서 multiplication_table() 함수를 호출하도록 수정하고 staged/committed 한다.
+	- main.c 파일을 임의로 수정한다.
+	- git diff 를 해본다.
+	- main.c 파일을 마지막 committed 상태로 되돌린다.
+	- 히스토리를 살펴본다.
 
