@@ -259,9 +259,9 @@ backgroundColor: #fff
 * 같이 Commit해야 할 파일을 실수로 빼고 commit 했을 때:
 	- ``` $ git commit --amend ```
 	```bash
-	$ `git commit -m "Add newfile"`
-	$ `git add forgotten`
-	$ `git commit --amend`
+	$ git commit -m "Add newfile"
+	$ git add forgotten
+	$ git commit --amend
 	[master 26f6884] Add newfile
 		Date: Tue Jan 3 06:09:27 2017 +0900
 		3 files changed, 2 insertions(+)
@@ -308,17 +308,6 @@ backgroundColor: #fff
 	nothing to commit, working tree clean
 	```
 
-
-## Stash
-* Commit을 하긴 좀 부족하고, 다른 브랜치 작업은 해야겠고.
-* Stash는 Modified이면서 Tracked 상태인 파일과 Staged 상태인 파일들을 보관해두는 장소
-	- Staged 상태 파일들은 복구될 때 Staging Area에서 내려감
-* 아직 끝나지 않은 수정사항을 스택에 잠시 저장했다가 나중에 다시 적용할 수 있음
-	```bash
-	$ git stash           [Commit하지 않은 파일들을 보관]
-	$ git stash apply     [보관한 파일들을 복구]
-	$ git stash drop      [보관 장소 제거]
-	```
 
 
 ## Tagging
@@ -370,7 +359,9 @@ Issue: [#365](https://link/to/issue/365)
 ```
 * 출처: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 
-<!--
+
+## Write a Good Commit Message
+
 * 제목과 본문을 한 줄 띄워 분리하기
 * 제목은 영문 기준 50자 이내로
 * 제목 첫글자를 대문자로
@@ -378,7 +369,7 @@ Issue: [#365](https://link/to/issue/365)
 * 제목은 명령조로
 * 본문은 영문 기준 72자마다 줄 바꾸기
 * 본문은 어떻게보다 무엇을, 왜에 맞춰 작성하기
--->
+
 
 ## Exercise
 * https://try.github.io
