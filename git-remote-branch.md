@@ -34,19 +34,19 @@ backgroundColor: #fff
 	- ``` $ git merge origin/master ```
 
 
-## 브랜치 Push
+## 로컬 브랜치 Push
 * 브랜치를 원격지에 올려서 공유하기
 	```bash
-	$ `git branch testing`                                [로컬 브랜치]
-	$ `git checkout testing`
+	$ git branch testing                                [로컬 브랜치]
+	$ git checkout testing
 	Switched to branch 'testing'
 	$ touch testfile
-	$ `git add testfile`
-	$ `git commit -m "testfile added"`
+	$ git add testfile
+	$ git commit -m "testfile added"
 	[testing daf25d2] testfile added
 	 1 file changed, 0 insertions(+), 0 deletions(-)
 	 create mode 100644 testing
-	$ `git push origin testing`                           [원격지 origin에 testing 브랜치 push]
+	$ git push -u origin testing                           [원격지 origin에 testing 브랜치 push]
 	Username for 'https://github.com': jyheo
 	Password for 'https://jyheo@github.com':
 	Counting objects: 3, done.
@@ -56,39 +56,40 @@ backgroundColor: #fff
 	Total 3 (delta 1), reused 0 (delta 0)
 	remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
 	To https://github.com/jyheo/test.git
-	 * `[new branch]`      `testing -> testing`
+	 * [new branch]      testing -> testing
 	```
 
 
-## 브랜치 Push
+## 로컬 브랜치 Push
 * 원격지에 새로 testing 브랜치가 push된 것을 확인
 ![](images/rbranch-push.png)
 
 
-## 브랜치 Push
+## 원격 저장소 브랜치 로컬로 가져오기
 * 트래킹 브랜치
 	- 원격지의 브랜치로 작업하기
 * ``` $ git checkout -b [로컬 브랜치] [원격 브랜치] ```
 	```bash
-	$ `git branch -a`
+	$ git fetch origin         [원격 저장소 내용 최신으로 가져오기]
+	$ git branch -a
 	* master
 	  remotes/origin/HEAD -> origin/master
 	  remotes/origin/master
 	  remotes/origin/new
 	  remotes/origin/testing
-	$ `git checkout -b testing origin/testing`
+	$ git checkout -b testing origin/testing
 	Branch testing set up to track remote branch testing from origin.
 	Switched to a new branch 'testing'
-	$ `git branch -vv`
+	$ git branch -vv                [트래킹 브랜치 확인]
 	  master  8f6ad29 [origin/master] Update jyheo
 	* testing 16fbdb2 [origin/testing] hello
 	```
 
 
-## 브랜치 Push
-* 작업 한 내용을 원격지에 push
+## 로컬 브랜치의 변경 이력(커밋)을 원격지에 push
+- ``` $ git push ```
 	```bash
-	$ `git push origin testing`
+	$ git push -u origin testing
 	Username for 'https://github.com': jyheo
 	Password for 'https://jyheo@github.com':
 	Counting objects: 3, done.
@@ -98,10 +99,10 @@ backgroundColor: #fff
 	Total 3 (delta 1), reused 0 (delta 0)
 	remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
 	To https://github.com/jyheo/test.git
-	   daf25d2..16fbdb2  `testing -> testing`
+	   daf25d2..16fbdb2  testing -> testing
 	```
 	- ``` $ git push -u origin testing ```
-		+ -u 옵션을 주면 현재 브랜치가 origin/testing의 트래킹 브랜치가 됨
+		+ -u 옵션을 주면 현재 브랜치(testing)가 origin/testing의 트래킹 브랜치가 됨
 * ``` $ git pull ```
 	- 트래킹 브랜치에 대해 자동으로 fetch/merge 수행
 
