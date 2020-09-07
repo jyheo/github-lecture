@@ -33,5 +33,3 @@ backgroundColor: #fff
 * 어떻게든 해결하고 나면 close
 
 
-## Exercise
-* 
