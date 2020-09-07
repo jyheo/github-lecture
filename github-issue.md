@@ -14,7 +14,7 @@ backgroundColor: #fff
 
 
 ## Github Issue
-* Issues에서 New issue 버튼
+- Issues에서 New issue 버튼
 	- Commit ID를 복사해 붙여 넣으면 해당 commit에 대한 링크가 생김
 	- \#과 issue 번호나 pull request 번호를 쓰면 링크가 생김
 ![](images/github-issue.png)
@@ -25,11 +25,11 @@ backgroundColor: #fff
 
 
 ## Github Issue
-* 누구나 issue를 만들 수 있음
+- 누구나 issue를 만들 수 있음
 	- 기능 제안, 버그 리포팅 등등
-* 프로젝트 collaborator들이 issue의 중요도에 따라 label을 붙일 수 있음
+- 프로젝트 collaborator들이 issue의 중요도에 따라 label을 붙일 수 있음
 	- 버그, 도움, 기능 추가 등
-* 개발자가 issue를 직접 해결하고 close하거나 다른 사람에게 assign할 수 있음
-* 어떻게든 해결하고 나면 close
+- 개발자가 issue를 직접 해결하고 close하거나 다른 사람에게 assign할 수 있음
+- 어떻게든 해결하고 나면 close
 
 
