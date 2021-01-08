@@ -33,3 +33,10 @@ backgroundColor: #fff
 - 어떻게든 해결하고 나면 close
 
 
+## Good First Issue
+- Issue 중 다른 사람들의 도움을 요청하는 label
+- 보통 처음 contribute를 하고 싶어 하는 사람들을 대상으로 함
+- 프로젝트 저장소를 알고 있다면,
+	- github.com/<owner>/<repository>/contribute
+- Github에서 임의의 good-first-issue를 찾고 싶다면
+	- https://github.com/topics/good-first-issue
