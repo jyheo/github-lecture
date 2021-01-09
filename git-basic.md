@@ -55,8 +55,8 @@ backgroundColor: #fff
 - 리눅스의 경우 배포판에 따라
 	- 데비안 계열: $ sudo apt-get install git-all
 	- Fedora 배포판: $ sudo yum install git-all
-- GUI: git-gui, SourceTree  
-![](images/git-gui.png) ![](images/sourcetree.png)
+- GUI: git-gui, SourceTree, Git Extensions
+![](images/git-gui.png) ![](images/sourcetree.png) ![](images/gitextensions.png)
 
 
 ## Git 설정
@@ -208,6 +208,29 @@ backgroundColor: #fff
 	2 files changed, 2 insertions(+)
 	create mode 100644 newfile2
 	```
+
+## 변경 이력 저장하기(파일 일부만 스태이징)
+- stage에 파일 변경 부분 확인하면서 일부분만 올리기
+	- ``` $ git add -p ```
+	```bash
+	$ git add -p
+	diff --git a/git-basic.md b/git-basic.md
+	index 5f742ec..839532a 100644
+	--- a/git-basic.md
+	+++ b/git-basic.md
+	@@ -55,8 +55,8 @@ backgroundColor: #fff
+	-- GUI: git-gui, SourceTree
+	-![](images/git-gui.png) ![](images/sourcetree.png)
+	+- GUI: git-gui, SourceTree, Git Extensions
+	+![](images/git-gui.png) ![](images/sourcetree.png) ![](images/gitextensions.png)
+	
+	(1/1) Stage this hunk [y,n,q,a,d,e,?]? ?
+	```
+	- y: 이 hunk를 추가, n: 추가하지 않음, q: 종료, ?: 도움말
+
+## 변경 이력 저장하기(파일 일부만 스태이징)
+- GUI를 쓰면 좀 더 편리하게 할 수 있음(예: Git Extensions)
+	![w:800](images/stage-by-line.png)
 
 
 ## 변경 이력 저장하기
