@@ -102,8 +102,17 @@ backgroundColor: #fff
     - pull할 때 연결된 원격 브랜치로 pull함
 
 
-## 원격 저장소에 로컬 저장소 변경 이력(커밋) 보내기
-- ``` $ git push [원격 이름] [브랜치 이름] ```
+## PUSH - 원격 저장소에 로컬 저장소 변경 이력(커밋) 보내기 (1/3)
+- ``` $ git push [원격 이름] [로컬 브랜치 이름] ```
+    - [로컬 브랜치 이름] 으로 지정한 로컬 브랜치를 [원격 이름]에 설정된 원격 저장소로 보냄
+    - 이때 원격 저장소에는 없지만 로컬 저장소에만 있는 새 커밋만 보내게 됨
+        - Reject 발생하면 해결 필요! git fetch+merge (pull) 필요
+    - 해당 브랜치가 원격 브랜치에 존재하지 않으면 새로 만들게 됨
+        - 원격 저장소에 새로 브랜치를 만드는 것은 조심스럽게 해야함
+        - 다른 사람과 공유하는 것이기 때문에...
+
+## PUSH - 원격 저장소에 로컬 저장소 변경 이력(커밋) 보내기 (2/3)
+- ``` $ git push [원격 이름] [로컬 브랜치 이름] ``` 예시
     ```bash
     $ git commit -m "test"        [새 변경 이력 생성]
     [master 4a52752] test
@@ -115,7 +124,7 @@ backgroundColor: #fff
     (use "git push" to publish your local commits)
 
     nothing to commit, working tree clean
-    $ git push                    [git push 원격 이름과 브랜치 이름 생략]
+    $ git push                    [git push 원격 이름과 로컬 브랜치 이름 생략]
     Username for 'https://github.com': jyheo
     Password for 'https://jyheo@github.com':
     Enumerating objects: 4, done.
@@ -128,15 +137,15 @@ backgroundColor: #fff
     2bafe99..4a52752  master -> master
     ```
 
-## 원격 저장소에 로컬 저장소 변경 이력(커밋) 보내기 (계속)
+## PUSH - 원격 저장소에 로컬 저장소 변경 이력(커밋) 보내기 (3/3)
 - **주의**
     - 여기에서 Username, Password는 github ID와 패스워드
     - git의 user.name, user.email과는 전혀 관련 없음!
 - git push할 때 원격 이름을 생략하면 default는 origin
-- git push할 때 브랜치 이름을 생략하면 로컬 브랜치와 동일한 이름의 원격 브랜치에 push함
+- git push할 때 로컬 브랜치 이름을 생략하면 현재 로컬 브랜치
     - 앞의 예에서는 로컬 브랜치 master를 원격 origin/master 브랜치로 push함
     - 즉, ``` $ git push origin master ``` 와 동일한 결과
-- 보통 원격 이름과 브랜치 이름을 생략하고 ``` $ git push ``` 로 많이 사용
+- 보통 원격 이름과 로컬 브랜치 이름을 생략하고 ``` $ git push ``` 로 많이 사용
 * github 웹으로 접속하여 변경된 내용 확인 가능
 
 
@@ -178,6 +187,7 @@ backgroundColor: #fff
 - git push를 할 때 원격 저장소의 내용이 로컬 보다 더 최신 내용이라서 push가 거절될 때가 있음
     - 이런 경우 git push를 하기 전에 git pull을 먼저 하고 git push를 해야 함
     - 원격 브랜치의 내용을 로컬 브랜치에 merge후에 push를 해야 하기 때문임
+        - Reject가 되지 않도록.
 
 
 ## Github Pull Request
@@ -202,6 +212,14 @@ backgroundColor: #fff
 ## Github Pull Request
 * **jyheo로 로그인하면** 아래와 같은 Pull request
 ![](images/pull-request4.png)
+
+
+## Sync a Fork
+- Fork한 저장소의 내용을 원본(upstream) 저장소의 최신 내용과 동기화 하기
+- Fetch Upstream
+    - ![w:400](https://docs.github.com/assets/images/help/repository/fetch-upstream-drop-down.png)
+- Fetch and Merge
+    - ![w:800](https://docs.github.com/assets/images/help/repository/fetch-and-merge-button.png)
 
 
 ## Github 공동 작업 초간단 시나리오
