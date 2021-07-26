@@ -38,7 +38,8 @@ backgroundColor: #fff
 
 
 ## 브랜치 생성
-- $ git branch [브랜치 이름]
+- $ git branch [브랜치 이름] [시작위치(생략가능)]
+    - 시작위치를 생략하면 HEAD가 됨, 커밋ID나 Tag 이름 가능
     ```bash
     $ git branch testing
     $ git branch -a
@@ -295,8 +296,7 @@ backgroundColor: #fff
 ## 브랜치 합치기 Rebase
 - Rebase는 말 그대로 base를 바꾼다는 뜻.
 - 현재 브랜치에서 새로 만든 커밋들을 rebase할 대상 브랜치의 커밋들로 옮겨 놓는 것
-- Rebase의 다른 활용 예
-    - https://git-scm.com/book/ko/v1/Git-브랜치-Rebase하기#좀-더-Rebase
+
 
 
 ## Stash
@@ -333,7 +333,7 @@ backgroundColor: #fff
 - index.html에서 food.html 링크 추가/commit
 - 브랜치 master로 변경
 - index.html 적당히 수정/commit
-- food 브랜치를 master로 merge
+- food 브랜치를 master로 merge 또는 rebase
 - conflict가 발생한다면 이를 해결하고 commit
 - food 브랜치 삭제
 
