@@ -39,7 +39,7 @@ backgroundColor: #fff
 
 ## 브랜치 생성
 - $ git branch [브랜치 이름] [시작위치(생략가능)]
-    - 시작위치를 생략하면 HEAD가 됨, 커밋ID나 Tag 이름 가능
+    - 시작위치를 생략하면 HEAD가 됨, 커밋ID나 Tag 이름 가능d
     ```bash
     $ git branch testing
     $ git branch -a
@@ -333,7 +333,18 @@ backgroundColor: #fff
 - index.html에서 food.html 링크 추가/commit
 - 브랜치 master로 변경
 - index.html 적당히 수정/commit
-- food 브랜치를 master로 merge 또는 rebase
+- food 브랜치를 master로 merge
 - conflict가 발생한다면 이를 해결하고 commit
 - food 브랜치 삭제
 
+## Exercise 2
+- 저장소 새로 만들기
+- main.c 파일 생성/commit
+- main.c 에 변경이력을 5개정도 임의로 작성
+- git tag로 v1.0이라고 태깅
+- main.c 에 변경이력 3개 정도 임의로 추가
+- v1.0 태그에 브랜치 bugfix 만들기
+- bugfix 로 브랜치 변경
+- main.c 수정하여 변경이력 2개 정도 임의로 추가
+- bugfix 브랜치를 master로 rebase
+- GUI 프로그램으로 히스토리 살펴보기
