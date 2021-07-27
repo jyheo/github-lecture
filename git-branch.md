@@ -221,7 +221,7 @@ backgroundColor: #fff
     - 해당 파일을 열어보면 어디에서 conflict가 발생 했는지 확인 가능. 파일 수정하여 해결 후 커밋.  
     ![](images/branch-ex5.png)
     ```bash
-    $ git -a commit
+    $ git commit -a
     [master C6] Merge branch 'iss53'
     ```
     ![w:500px](images/branch-ex6.png)
@@ -250,6 +250,19 @@ backgroundColor: #fff
     error: The branch 'testing' is not fully merged.
     If you are sure you want to delete it, run 'git branch -D testing'.
     ```
+
+## Exercise 1
+- 저장소 새로 만들기
+- index.html 파일 생성/commit
+- index.html에 간단한 자기 소개 html 작성/commit
+- 브랜치 food 생성/변경
+- food.html(좋아하는 음식) 작성/commit
+- index.html에서 food.html 링크 추가/commit
+- 브랜치 master로 변경
+- index.html 적당히 수정/commit
+- food 브랜치를 master로 merge
+- conflict가 발생한다면 이를 해결하고 commit
+- food 브랜치 삭제
 
 
 ## 브랜치 합치기 Rebase
@@ -319,24 +332,6 @@ backgroundColor: #fff
     Dropped refs/stash@{0} (ecab01f27fc7a47b8a1994e400e4cb48ba49f195)
     ```
 
-
-## Exercise
-- https://learngitbranching.js.org/
-
-
-## Exercise
-- 저장소 새로 만들기
-- index.html 파일 생성/commit
-- index.html에 간단한 자기 소개 html 작성/commit
-- 브랜치 food 생성/변경
-- food.html(좋아하는 음식) 작성/commit
-- index.html에서 food.html 링크 추가/commit
-- 브랜치 master로 변경
-- index.html 적당히 수정/commit
-- food 브랜치를 master로 merge
-- conflict가 발생한다면 이를 해결하고 commit
-- food 브랜치 삭제
-
 ## Exercise 2
 - 저장소 새로 만들기
 - main.c 파일 생성/commit
@@ -348,3 +343,7 @@ backgroundColor: #fff
 - main.c 수정하여 변경이력 2개 정도 임의로 추가
 - bugfix 브랜치를 master로 rebase
 - GUI 프로그램으로 히스토리 살펴보기
+
+
+## Exercise 3
+- https://learngitbranching.js.org/
