@@ -172,8 +172,10 @@ backgroundColor: #fff
 
 ## PUSH - 원격 저장소에 로컬 저장소 변경 이력(커밋) 보내기 (3/3)
 - **주의**
-    - 여기에서 Username, Password는 github ID와 패스워드
+    - 여기에서 Username, Password는 github ID와 Personal Access Token
     - git의 user.name, user.email과는 전혀 관련 없음!
+    - Personal Access Token - Github의 사용자 설정에서 생성
+        - https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 - git push할 때 원격 이름을 생략하면 default는 origin
 - git push할 때 로컬 브랜치 이름을 생략하면 현재 로컬 브랜치
     - 앞의 예에서는 로컬 브랜치 master를 원격 origin/master 브랜치로 push함
