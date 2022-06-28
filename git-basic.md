@@ -395,9 +395,6 @@ Issue: [#365](https://link/to/issue/365)
 
 
 ## Exercise
-- https://try.github.io
-
-## Exercise(계속)
 
 - Exercise
 	- 로컬 저장소를 생성한다.(git init)
