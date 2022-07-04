@@ -39,7 +39,7 @@ backgroundColor: #fff
 
 ## 브랜치 생성
 - $ git branch [브랜치 이름] [시작위치(생략가능)]
-    - 시작위치를 생략하면 HEAD가 됨, 커밋ID나 Tag 이름 가능d
+    - 시작위치를 생략하면 HEAD가 됨, 커밋ID나 Tag 이름 가능
     ```bash
     $ git branch testing
     $ git branch -a
@@ -251,19 +251,6 @@ backgroundColor: #fff
     If you are sure you want to delete it, run 'git branch -D testing'.
     ```
 
-## Exercise 1
-- 저장소 새로 만들기
-- index.html 파일 생성/commit
-- index.html에 간단한 자기 소개 html 작성/commit
-- 브랜치 food 생성/변경
-- food.html(좋아하는 음식) 작성/commit
-- index.html에서 food.html 링크 추가/commit
-- 브랜치 master로 변경
-- index.html 적당히 수정/commit
-- food 브랜치를 master로 merge
-- conflict가 발생한다면 이를 해결하고 commit
-- food 브랜치 삭제
-
 
 ## 브랜치 합치기 Rebase
 - Git에서 한 브랜치에서 다른 브랜치로 합치는 방법
@@ -306,6 +293,7 @@ backgroundColor: #fff
     ![](images/branch-rebase2.png)
 
 
+
 ## 브랜치 합치기 Rebase
 - Rebase는 말 그대로 base를 바꾼다는 뜻.
 - 현재 브랜치에서 새로 만든 커밋들을 rebase할 대상 브랜치의 커밋들로 옮겨 놓는 것
@@ -332,7 +320,25 @@ backgroundColor: #fff
     Dropped refs/stash@{0} (ecab01f27fc7a47b8a1994e400e4cb48ba49f195)
     ```
 
-## Exercise 2
+## Exercise 1 - Online Exercise
+- https://learngitbranching.js.org/
+
+
+## Exercise 2 - Branch, Merge, Conflict
+- 저장소 새로 만들기
+- index.html 파일 생성/commit
+- index.html에 간단한 자기 소개 html 작성/commit
+- 브랜치 food 생성/변경
+- food.html(좋아하는 음식) 작성/commit
+- index.html에서 food.html 링크 추가/commit
+- 브랜치 master로 변경
+- index.html 적당히 수정/commit
+- food 브랜치를 master로 merge
+- conflict가 발생한다면 이를 해결하고 commit
+- food 브랜치 삭제
+
+
+## Exercise 3 - Branch, Rebase
 - 저장소 새로 만들기
 - main.c 파일 생성/commit
 - main.c 에 변경이력을 5개정도 임의로 작성
@@ -345,5 +351,3 @@ backgroundColor: #fff
 - GUI 프로그램으로 히스토리 살펴보기
 
 
-## Exercise 3
-- https://learngitbranching.js.org/
