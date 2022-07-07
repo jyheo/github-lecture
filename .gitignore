@@ -1,3 +1,5 @@
 *.pptx
 *.pdf
 *.mp4
+!gitflow.*
+!travis_CI.*
