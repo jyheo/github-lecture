@@ -71,33 +71,6 @@ from Wikipedia
 	- Travis-CI, Jenkins
 	
 
-## OSS 개발 도구
-- 개발 도구에 대한 설문 (2016, Gitlab)
-	- 98% of developers use open source tools at work
-	- 92% of developers say they prefer Git repositories
-	- 91% prefer to use the same development tools for work and personal projects
-	- 81% say it’s critical for organizations to use the latest development tools
-
-출처: https://page.gitlab.com/2016-Developer-Survey_2016-Developer-Survey.html
-
-
-## OSS 현황
-- 65% 회사가 OSS 사용 (2015년 60%)
-	- 절반 가까운 회사가 OSS에 대한 정책(검증, 변경 추적, 취약점 파악 등) 부재
-- 67% 회사가 개발자에게 OSS 기여 권장
-	- 33% 회사가 풀타임 OSS 개발자 있음
-- OSS 기여 이유
-	- 버그 수정/ 기능 추가, 경쟁력 확보, 개발 비용 절감
-- OSS 사용 이유
-	- 품질, 좋은 기능/기술, 커스터마이즈 가능
-- OSS 사용 부분
-	- 운영체제, 데이터베이스, 개발 도구(73%가 Git 사용)
-- OSS를 통한 수익
-	- SaaS, 커스텀 개발, 서비스/지원
-
-출처: http://www.slideshare.net/blackducksoftware/2016-future-of-open-source-survey-results]
-
-
 ## OSS License
 - 공개SW포탈
 	- www.oss.kr
@@ -113,29 +86,20 @@ from Wikipedia
 	![w:100px](images/osi.png)
 
 
-## OSS License 사용 현황
-![w:900px](images/license.png)
-
-출처: https://www.blackducksoftware.com/top-open-source-licenses
-
-
 ## OSS License
 - 법률적 문제, 간단하지 않음
 - Copyleft: 수정/재배포시 동일 라이선스 강제 조항
 - GPL
 	- Copyleft, 파생물/수정 사항 공개 의무
+	- 명시적 특허 사용 허락 (3.0부터)
 - LGPL
 	- LGPL로 된 라이브러리를 사용한 경우 공개 의무가 없음
 - MIT
 	- Copyleft나 수정 사항 공개 등의 의무가 없음
-	- GPL과 같은 제약이 없어 인기가 많음
-
-
-## OSS License 위반 모니터링
-
-![](images/oss-violation.png)
-
-출처: 국가R&D 공개SW 활용방안, NIPA, 2011
+- Apache 2.0
+	- Copyleft나 수정 사항 공개 등의 의무가 없음
+	- 명시적 특허 사용 허락
+- MIT와 Apache 2.0이 가장 많이 사용됨
 
 
 ## OSS 찾기
@@ -154,8 +118,3 @@ from Wikipedia
 ## Black Duck Open Hub
 ![](images/blackduck2.png)
 
-
-## Reference
-- 이 강의 자료에는 국민대 이민석 교수님의 자료에서 참고한 내용이 많습니다.
-	- http://hl1itj.tistory.com/118
-	
