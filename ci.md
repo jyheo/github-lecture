@@ -155,14 +155,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: configure   <- 삭제
-      run: ./configure  <- 삭제
+    - name: configure   # 삭제
+      run: ./configure  # 삭제
     - name: make
       run: make
     - name: make check
       run: make check
-    - name: make distcheck  <- 삭제
-      run: make distcheck   <- 삭제
+    - name: make distcheck  # 삭제
+      run: make distcheck   # 삭제
 ```
 
 ## Starter Workflow
@@ -202,5 +202,86 @@ int main()
 - Actions 에서 결과 확인
 
 
+## uses Actions
+- Github의 공개된 다른 저장소에 있는 action 
+    - Github Marketplace(https://github.com/marketplace)에 있는 action
+    - 형식: {owner}/{repo}@{ref}
+    ```yml
+     - name: typos-action
+       uses: crate-ci/typos@v1.22.7
+    ```
+    - Github 공식 actions repository는 owner가 actions
+- workflow와 같은 저장소에 있는 action
+    - **.github/actions**/hello-action/action.yml 과 같이 action 정의된 경우
+    ```yml
+      - name: Use local hello-action
+        uses: ./.github/actions/hello-action
+    ```
+    - action.yml 정의
+        - https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
+- Docker Hub에 있는 공개된 도커 이미지
+
+## Workflow 에서 환경 변수 지정
+- steps에서 run으로 실행하는 프로그램이나 스크립트에서 사용할 환경 변수 지정
+- **env** 키워드로 지정
+- 수식으로 환경 변수 값을 지정할 수도 있음
+    - 단순 연산 부터 if 조건, 문자열 처리 함수도 사용 가능
+    - https://docs.github.com/en/actions/learn-github-actions/expressions
+```yml
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run program with Environment variables
+      run: node client.js
+      env:
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: 5432
+        MY_ENV_VAR: ${{ 1+1 }}  # 수식으로 환경 변수 값 지정
+```
+
+## Workflow 에서 파일 공유 (Artifacts)
+- 파일을 Artifacts 로 저장하고 다운로드 하는 방식으로 공유
+```yml
+jobs:
+  upload-job:
+    name: Save output
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: expr 1 + 1 > output.log
+      - name: Upload output file      # 로그 파일을 업로드
+        uses: actions/upload-artifact@v4
+        with:
+          name: output-log-file
+          path: output.log
+  download-job:
+    runs-on: ubuntu-latest
+    needs: upload-job            # upload-job이 먼저 수행되어야 함
+    steps:
+      - name: Download a single artifact    # 로그 파일 다운로드
+        uses: actions/download-artifact@v4
+        with:
+          name: output-log-file
+      - run: cat output.log
+```
+
+## Workflow 에서 Context 사용
 
 
+## Workflow 에서 Variables 사용
+
+
+## Workflow 활용
+
+
+## Jobs 활용
+
+
+## Exercise 2
+
+
+## Build & Test 예
+
+
+## Exercise 3
