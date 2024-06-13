@@ -13,13 +13,22 @@ backgroundColor: #fff
 ### 허준영(jyheo@hansung.ac.kr)
 
 
-## 오픈 소스 소프트웨어 정의
-- Open-source software (OSS) is computer software with its **source code made available with a license** in which the copyright holder **provides the rights to study, change, and distribute the software to anyone and for any purpose.**
-- Open-source software may be **developed in a collaborative public manner.** According to scientists who studied it, open-source software is a prominent example of open collaboration.
-from Wikipedia
-- 오픈 소스 소프트웨어(open source software, OSS)는 **소스 코드를 공개해 누구나 특별한 제한 없이 그 코드를 보고 사용할 수 있는 오픈 소스 라이선스를 만족하는 소프트웨어를 말한다.** 통상 간략하게 오픈 소스라고 말하기도 한다.
+## 내용
+- 오픈 소스 소프트웨어 정의
+- 오픈 소스 소프트웨어 장점
+- 오픈 소스 소프트웨어 개발 도구
+- 오픈 소스 소프트웨어 라이선스
+- 오픈 소스 소프트웨어 검색하기
 
-출처: 위키피디아
+
+## 오픈 소스 소프트웨어 정의
+- Open-source software (OSS) is computer software that is released under a **license** in which the copyright holder grants users the **rights to use, study, change, and distribute the software and its source code to anyone and for any purpose.**
+	- Open-source software may be **developed in a collaborative, public manner.** 
+	- Open-source software is a prominent example of open collaboration, meaning any capable user is able to participate online in development, making the number of possible contributors indefinite. 
+	- The ability to examine the code facilitates public trust in the software.
+- 오픈 소스 소프트웨어(Open source software; OSS)는 **소스 코드를 공개해 누구나 특별한 제한 없이 그 코드를 보고 사용할 수 있는 오픈 소스 라이선스를 만족하는 소프트웨어**를 말한다. 
+
+출처: Wikipedia(위키피디아)
 
 
 ## 오픈 소스 소프트웨어 정의
@@ -28,7 +37,7 @@ from Wikipedia
 	- 무료
 - Source Code
 	- 소스 접근 가능, 컴파일 가능, 프로그래머가 이해/수정 가능한 형태
-- Derived Works
+- Derived Works (파생물)
 	- 수정 및 재배포 가능
 
 출처: https://opensource.org/osd
@@ -66,9 +75,9 @@ from Wikipedia
 	- 개발자, 사용자들의 의사소통(기능 요청, 버그 보고 등)
 	- bugtrackers, mailling list, IRC
 - 코드 리뷰 시스템
-	- Gerrit, Gitlab, Rietveld
-- 지속적 통합 시스템(Continuous Integration)
-	- Travis-CI, Jenkins
+	- Gerrit, Rhodecode, Gitlab
+- CI/CD(Continuous Integration/Continuous Delivery)
+	- Travis-CI, Jenkins, Github Actions
 	
 
 ## OSS License
@@ -112,9 +121,8 @@ from Wikipedia
 
 
 ## Black Duck Open Hub
-![](images/blackduck.png)
-
-
-## Black Duck Open Hub
 ![](images/blackduck2.png)
 
+
+# Q&A
+<!-- _class: lead -->
