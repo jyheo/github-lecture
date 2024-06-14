@@ -49,6 +49,20 @@
   
   img {
     vertical-align: text-top;
+    border-style: solid;
     /* border-style: solid;
     border-color: lightslategrey; */
   }
+
+  img[alt~="side20"] {
+    float: right;
+    height: 100%;
+    margin-top: -20%;
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
