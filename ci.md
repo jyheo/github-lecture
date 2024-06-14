@@ -138,8 +138,9 @@ jobs:
 
 
 ## Starter Workflow
-- New workflow 를 눌러서 workflow 템플릿에서 골라서 시작하기
-    - Action이 없으면 템플릿 고르는 화면이 바로 나옴
+- 템플릿에서 workflow 만들기
+- Action 탭에서 [New workflow] 클릭하면 템플릿 선택 화면 나타남
+    - workflow가 없으면 템플릿 고르는 화면이 바로 나옴
 
 ![](images/ci/actions-starter.png)
 
@@ -303,11 +304,20 @@ steps:
   - github.ref : 실행되는 repository branch나 tag 등
 - env: workflow에서 정의한 변수
   - env.변수이름 형태로 사용
+  - ${{ env.DAY_OF_WEEK }}
 - job: 현재 수행중인 job
 - steps: 현재 수행중인 job의 step에 대한 정보, step을 구분하기 위해 id를 정의해야 함
 - runner: runner에 대한 정보
   - runner.os : 운영체제 정보 (Linux, Windows, macOS)
 - 이외에도 secrets, needs, inputs 등이 있음
+
+
+## 변수 사용과 Expression에서 변수 사용
+- Workflow는 변수를 바로 인식하지 못함
+- 변수(환경변수)를 인식하는 프로그램에서는 바로 사용 가능
+  - 예) echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+- Workflow에서 변수를 사용하려면 Expression에서 사용해야 함
+  - 예) name: ${{ DAY_OF_WEEK }}
 
 
 ## Context 사용 예
@@ -331,8 +341,93 @@ jobs:
         run: echo "Running PR only CI"
 ```
 
+## Exercise 2
+- actions/upload-artifact@v4 와 actions/download-artifact@v4를 사용하는 Artifact 예제에서 중복해서 나오는 output 이름과 파일 경로를 변수로 바꿔보기
+- output-log-file이 2번, output.log가 3번 나타나는데 이를 대신할 적절한 변수를 정의하고 변수로 바꿔보기
+- workflow 결과를 확인하고 Actions 탭에서 생성된 artifact 파일 확인하기
+- 주의: Expression으로 쓸지 변수를 바로 사용할 지 잘 판단할 것
+- 힌트:
+  ```yml
+  env:
+    OUTPUT_FILE: output.log
+    OUTPUT_NAME: output-log-file
 
-## Workflow 트리거링
+  - run: cat $OUTPUT_FILE
+
+  - name: ${{ env.OUTPUT_NAME }}
+  ```
+
+## Exercise 2 - 솔루션
+```yml
+name: Test workflow
+on: workflow_dispatch
+env:
+  OUTPUT_FILE: output.log
+  OUTPUT_NAME: output-log-file
+jobs:
+  upload-job:
+    name: Save output
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: expr 3 + 1 > $OUTPUT_FILE
+      - name: Upload output file
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.OUTPUT_NAME }}
+          path: ${{ env.OUTPUT_FILE }}
+  download-job:
+    runs-on: ubuntu-latest
+    needs: upload-job
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.OUTPUT_NAME }}
+      - run: cat $OUTPUT_FILE
+```
+
+## Exercise 2 - 솔루션
+- Actions 탭에서 Artifacts 확인
+![](images/ci/actions-artifacts.png)
+
+
+
+## Workflow 트리거
+- push 이벤트가 발생할 때마다 workflow 시작
+  - ``` on: push ```
+- pull_request 이벤트
+  - ``` on: pull_request ```
+- 수동으로 시작하기
+  - ``` on: workflow_dispatch ```
+  - Actions 탭에서 workflow를 선택하면 [Run workflow] 버튼 생김
+- 2개 이상 이벤트
+  - ``` on: [push, pull_request] ```
+
+## Workflow 트리거
+- 이벤트 활동 종류에 따라 workflow 트리거
+  ```yml
+  on:
+    issues:      # 이슈 이벤트
+      types:
+        - opened   # 이슈가 새로 오픈
+        - labeled  # 이슈에 레이블 붙인 경우
+  ```
+- 특정 브랜치에 따라 workflow 트리거, 또는 제외
+  ```yml
+  on:
+    push:
+      branches:
+        - main     # main 브렌치
+        - 'releases/**'   # release/ 로시작하는 브렌치
+        - '!releases/**-alpha'  # release/로 시작하고 -alpha로 끝나는 브렌치는 제외
+  ```
+- 특정 path, tag에 대해서 필터링할 수도 있음
+
+
+## 다른 Workflow 부르기
+- resuable workflow
+- input, output
 
 
 ## Jobs 활용
