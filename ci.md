@@ -401,6 +401,8 @@ jobs:
 - 수동으로 시작하기
   - ``` on: workflow_dispatch ```
   - Actions 탭에서 workflow를 선택하면 [Run workflow] 버튼 생김
+- 다른 workflow에서 호출 가능
+  - ``` on: workflow_call ```
 - 2개 이상 이벤트
   - ``` on: [push, pull_request] ```
 
@@ -425,18 +427,27 @@ jobs:
 - 특정 path, tag에 대해서 필터링할 수도 있음
 
 
-## 다른 Workflow 부르기
-- resuable workflow
-- input, output
+## Workflow 의 입력과 출력
+- workflow_dispatch나 workflow_call 트리거가 있는 경우 입력과 출력을 지정할 수 있음
+  - 즉, 수동으로 시작할 때 입력 값을 지정하거나,
+  - 다른 workflow를 호출할 때 입력을 주고, 출력을 받을 수 있음
+- inputs
+- outputs
+
+
+## Exercise 3
 
 
 ## Jobs 활용
 
 
-## Exercise 2
 
+## Exercise 4
 
 ## Build & Test 예
 
 
-## Exercise 3
+## Exercise 5
+
+# Q&A
+<!-- _class: lead -->
