@@ -1,5 +1,9 @@
 {
   "markdown.marp.themes": [
     "./my-theme.css"
-  ]
+  ],
+  "markdown.copyFiles.destination": {   
+    "*": "images/${documentBaseName}/"
+  },
+  "markdown.marp.enableHtml": true
 }
