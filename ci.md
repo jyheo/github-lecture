@@ -38,7 +38,7 @@ backgroundColor: #fff
     - 각 작업은 가상 머신이나 컨테이너에서 수행되며, 미리 정의된 스크립트나 액션(action)을 실행
 
 
-## Github Actions - Workflows
+## Workflows
 - YAML 형식 파일로 작성, 저장소에 포함
 - 이벤트 발생할 때 자동 실행되거나 스케줄에 따라 실행
 - 직접 실행도 가능
@@ -49,7 +49,7 @@ backgroundColor: #fff
     - 새 이슈를 생성할 때마다 레이블 추가 수행
 - 다른 workflow에서 참조도 가능
 
-## Github Actions - Events
+## Events
 - Workflow를 시작하는 트리거 역할을 하는, 저장소와 관련된 활동
 - 예)
     - 누군가 pull request를 생성
@@ -57,14 +57,14 @@ backgroundColor: #fff
     - 저장소에 커밋을 push
 - 스케줄에 따라 트리거를 동작시키거나 REST API를 통하거나 직접 트리거 동작 가능
 
-## Github Actions - Jobs
+## Jobs
 - 동일한 runner에서 실행되는 workflow에서의 단계(step)들의 집합
 - 각 단계는 스크립트나 액션이 될 수 있음
 - 각 단계는 순서대로 수행되거나 다른 단계에 의존되어 수행 될 수 있음
 - 동일한 runner에서 수행되기 때문에 다른 단계와 데이터 공유가 가능
     - 예를 들어 빌드 단계의 결과물을 이용해 테스트 단계에서 사용
 
-## Github Actions - Actions
+## Actions
 - 액션(action)은 Github Actions 플랫폼에서 복잡하지만 자주 사용되는 태스크를 수행하는 커스텀 응용
 - workflow에서 액션을 사용함으로써 반복되는 코드를 줄일 수 있음
 - 액션의 예
@@ -74,12 +74,18 @@ backgroundColor: #fff
 - 직접 액션을 만들 수도 있고, Github Marketplace에서 적절한 액션을 골라 사용할 수 있음.
 - https://github.com/marketplace?type=actions
 
-## Github Actions - Runners
+## Runners
 - workflows를 실행하는 서버
 - 각 runner는 한번에 하나의 job을 실행
 - Github에서 제공하는 가상 머신: Ubuntu Linux, Microsoft Windows, macOS
 - workflow는 새로 만들어진 가상 머신에서 수행됨
 - 특별한 설정의 시스템의 runner가 필요하면 직접 호스팅한 시스템을 사용할 수 있음.
+
+## Workflow - 정리하면...
+- Workflow는 어떤 이벤트(on)에 의해 실행될지, 어떤 작업(jobs)을 실행할지, 어떤 서버(runs-on)에서 실행할지 정의한 것
+- Workflow는 여러개의 job으로 구성되고
+- 각 job은 여러 step으로 구성되고
+- 각 step은 action이나 스크립트, 명령어를 실행한다.
 
 
 ## 간단한 Workflow 만들기
@@ -155,14 +161,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: configure   # 삭제
-      run: ./configure  # 삭제
+    - name: configure   # 이 예제에서 필요 없으므로 삭제
+      run: ./configure  # 이 예제에서 필요 없으므로 삭제
     - name: make
       run: make
     - name: make check
       run: make check
-    - name: make distcheck  # 삭제
-      run: make distcheck   # 삭제
+    - name: make distcheck  # 이 예제에서 필요 없으므로 삭제
+      run: make distcheck   # 이 예제에서 필요 없으므로 삭제
 ```
 
 ## Starter Workflow
@@ -221,27 +227,10 @@ int main()
         - https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
 - Docker Hub에 있는 공개된 도커 이미지
 
-## Workflow 에서 환경 변수 지정
-- steps에서 run으로 실행하는 프로그램이나 스크립트에서 사용할 환경 변수 지정
-- **env** 키워드로 지정
-- 수식으로 환경 변수 값을 지정할 수도 있음
-    - 단순 연산 부터 if 조건, 문자열 처리 함수도 사용 가능
-    - https://docs.github.com/en/actions/learn-github-actions/expressions
-```yml
-jobs:
-  example-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run program with Environment variables
-      run: node client.js
-      env:
-        POSTGRES_HOST: postgres
-        POSTGRES_PORT: 5432
-        MY_ENV_VAR: ${{ 1+1 }}  # 수식으로 환경 변수 값 지정
-```
 
-## Workflow 에서 파일 공유 (Artifacts)
-- 파일을 Artifacts 로 저장하고 다운로드 하는 방식으로 공유
+
+## Workflow 에서 job간에 파일 공유 (Artifacts)
+- 파일을 Artifacts 로 저장하고 다운로드 하는 action을 이용해 공유
 ```yml
 jobs:
   upload-job:
@@ -266,13 +255,84 @@ jobs:
       - run: cat output.log
 ```
 
-## Workflow 에서 Context 사용
+## Workflow 에서 환경 변수(Variable) 지정
+- workflow, job, step 수준에서 환경 변수 지정
+- **env** 키워드로 지정
+```yml
+env:
+  DAY_OF_WEEK: Monday    # workflow 수준 변수
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    env:
+      Greeting: Hello       # job 수준 변수
+    steps:
+      - name: Run program with Environment variables
+        run: node client.js
+        env:
+          POSTGRES_HOST: postgres  # step 수준 변수
+          POSTGRES_PORT: 5432
+      - name: "Say Hello Mona it's Monday"
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
+```
+
+## Workflow 에서 Expression 사용
+- 용도
+  - 환경 변수 값을 expression 으로 지정
+  - step의 실행을 expression 결과에 따라 결정
+- expression에서 context 접근이나 간단한 연산, 유용한 함수들을 사용할 수 있음
+- https://docs.github.com/en/actions/learn-github-actions/expressions
+- 문법: ${{  expression  }}
+- 예)
+```yml
+steps:
+  - name: if condition
+  run: node client.js
+  if: ${{ success() }}  # 앞의 모든 step이 성공일 경우 이 step을 실행
+  env:
+    MY_ENV_VAR: ${{ 1+1 }}  # 수식으로 환경 변수 값 지정
+```
+
+## Expression 에서 Context 사용
+- Context는 workflow, 변수, runner, job, step에 대한 정보를 **expression**에서 접근하기 위한 방법
+  - 각각에 대한 객체가 정의되어 있고 각 객체에는 여러 속성을 포함
+- github : workflow 실행에 대한 정보
+  - github.actor : 실행 원인 제공자
+  - github.ref : 실행되는 repository branch나 tag 등
+- env: workflow에서 정의한 변수
+  - env.변수이름 형태로 사용
+- job: 현재 수행중인 job
+- steps: 현재 수행중인 job의 step에 대한 정보, step을 구분하기 위해 id를 정의해야 함
+- runner: runner에 대한 정보
+  - runner.os : 운영체제 정보 (Linux, Windows, macOS)
+- 이외에도 secrets, needs, inputs 등이 있음
 
 
-## Workflow 에서 Variables 사용
+## Context 사용 예
+- github context 사용 예시
+```yml
+name: Run CI
+on: [push, pull_request]
+
+jobs:
+  normal_ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run normal CI
+        run: echo "Running normal CI"
+
+  pull_request_ci:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }} # github context 접근
+    steps:
+      - name: Run PR CI
+        run: echo "Running PR only CI"
+```
 
 
-## Workflow 활용
+## Workflow 트리거링
 
 
 ## Jobs 활용
