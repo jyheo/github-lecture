@@ -431,6 +431,9 @@ jobs:
 - workflow_dispatch나 workflow_call 트리거가 있는 경우 입력과 출력을 지정할 수 있음
   - 즉, 수동으로 시작할 때 입력 값을 지정하거나,
   - 다른 workflow를 호출할 때 입력을 주고, 출력을 받을 수 있음
+- workflow_dispatch는 input 만
+- workflow_call은 input, output 모두 가능
+
 
 ## reusable-workflow.yml
 ```yml
@@ -480,7 +483,7 @@ jobs:
 - 특정 브랜치(release)에 대해 push가 있을 때, 앞에서 만든 reusable workflow를 실행한다.
   - 이때 input으로 문자열 2개를 준다. (Hello, World)
   - output은 echo로 화면 출력한다.
-   
+
 
 ## Jobs 활용
 
