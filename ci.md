@@ -485,6 +485,59 @@ jobs:
   - output은 echo로 화면 출력한다.
 
 
+## Cache dependency
+- 자주 재사용되는 파일을 캐싱하여 실행 시간을 단축
+- Cache는 일반적으로 변하지 않는, 빌드에 필요한 dependecy 등을 저장하기 위한 것
+- 비교) Artifact는 실행 결과로 생기는 바이너리 또는 로그와 같이 변경되는 내용을 저장하기 위한 것
+- key 에 해당하는 cache가 있으면 복구하고 없으면, job 종류 후 새로 cache를 생성
+```yml
+steps:
+  - name: Cache Gradle packages
+    id: cache-gradle
+    uses: actions/cache@v3   # cache 액션
+    with:
+      path: |                # 2라인 이상 작성할 때 | 를 먼저 쓰고 그 다음에 나열함
+        ~/.gradle/caches     # cache할 경로
+        ~/.gradle/wrapper    # cache할 경로
+      key: ${{ runner.os }}-build-${{ hashFiles('a-file') }} # 어떤 파일의 hash 값을 키에 사용
+  - if: ${{ steps.cache-gradle.outputs.cache-hit != 'true' }}  # cache-hit 는 캐시 hit 여부
+    run echo ${{ steps.cache-gradle.outputs.cache-hit }}
+```
+
+## Cache dependency
+- 아래 열거된 패키지 매니저를 사용하는 경우 setup- 액션을 사용하면 간편함
+- npm, Yarn, pnpm : setup-node
+- RubyGems : setup-ruby
+- Go go.sum : setup-go
+- .NET NuGet : setup-dotnet
+- pip, pipenv, Poetry : setup-python
+```yml
+steps:
+- uses: actions/checkout@v4
+- uses: actions/setup-python@v5
+  with:
+    python-version: '3.9'
+    cache: 'pip' # caching pip dependencies
+- run: pip install -r requirements.txt
+```
+
+## Cache dependency
+- Gradle, Maven : setup-java
+```yml
+steps:
+- uses: actions/checkout@v4
+- uses: actions/setup-java@v4
+  with:
+    distribution: 'temurin'
+    java-version: '21'
+    cache: 'gradle'
+    cache-dependency-path: | # optional
+      sub-project/*.gradle*
+      sub-project/**/gradle-wrapper.properties
+- run: ./gradlew build --no-daemon
+```
+
+
 ## Jobs 활용
 
 
