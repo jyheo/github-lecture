@@ -309,7 +309,7 @@ steps:
 - steps: 현재 수행중인 job의 step에 대한 정보, step을 구분하기 위해 id를 정의해야 함
 - runner: runner에 대한 정보
   - runner.os : 운영체제 정보 (Linux, Windows, macOS)
-- 이외에도 secrets, needs, inputs 등이 있음
+- 이외에도 secrets, needs(출력), inputs(입력) 등이 있음
 
 
 ## 변수 사용과 Expression에서 변수 사용
@@ -431,12 +431,56 @@ jobs:
 - workflow_dispatch나 workflow_call 트리거가 있는 경우 입력과 출력을 지정할 수 있음
   - 즉, 수동으로 시작할 때 입력 값을 지정하거나,
   - 다른 workflow를 호출할 때 입력을 주고, 출력을 받을 수 있음
-- inputs
-- outputs
 
+## reusable-workflow.yml
+```yml
+name: Reusable workflow example
+on:
+  workflow_call:
+    inputs:   # 입력 정의
+      input1:
+        required: true
+        type: string
+    outputs:  # 출력 정의
+      output1:
+        description: "The first output string"
+        value: ${{ jobs.example_job.outputs.output1 }}
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.result }}
+    steps:
+    - id: step1    # input1에 10을 더해서 output result에 기록
+      run: echo "result=`expr ${{ inputs.input1 }} + 10`" >> $GITHUB_OUTPUT
+```
+
+
+## Call reusable workflow
+- jyheo 계정의 test3 저장소에 있는 reusable-workflow.yml 을 호출
+```yml
+name: Call a reusable workflow and use its outputs
+on:
+  workflow_dispatch
+jobs:
+  job1:
+    uses: jyheo/test3/.github/workflows/reusable-workflow.yml@main
+    with:
+      input1: 10  # 입력 input1 을 10으로 하여 reusable-workflow 실행
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1   # job1이 끝난 후에 수행
+    steps:
+      - run: echo ${{ needs.job1.outputs.output1 }}  # needs 를 통해 output 접근
+```
 
 ## Exercise 3
-
+- input으로 문자열 2개를 받은 후 두 문자열을 결합하여 output으로 내보내는 reusable workflow를 만든다.
+- 특정 브랜치(release)에 대해 push가 있을 때, 앞에서 만든 reusable workflow를 실행한다.
+  - 이때 input으로 문자열 2개를 준다. (Hello, World)
+  - output은 echo로 화면 출력한다.
+   
 
 ## Jobs 활용
 
