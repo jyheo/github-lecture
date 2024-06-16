@@ -507,7 +507,9 @@ steps:
 ## Cache dependency
 - 아래 열거된 패키지 매니저를 사용하는 경우 setup- 액션을 사용하면 간편함
 - npm, Yarn, pnpm : setup-node
-
+- RubyGems : setup-ruby
+- Go go.sum : setup-go
+- .NET NuGet : setup-dotnet
 - pip, pipenv, Poetry : setup-python
 ```yml
 steps:
