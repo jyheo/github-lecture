@@ -507,9 +507,7 @@ steps:
 ## Cache dependency
 - 아래 열거된 패키지 매니저를 사용하는 경우 setup- 액션을 사용하면 간편함
 - npm, Yarn, pnpm : setup-node
-- RubyGems : setup-ruby
-- Go go.sum : setup-go
-- .NET NuGet : setup-dotnet
+
 - pip, pipenv, Poetry : setup-python
 ```yml
 steps:
@@ -539,15 +537,59 @@ steps:
 
 
 ## Jobs 활용
+- workflow는 1개 이상의 job으로 이루어짐
+- 기본적으로 job 들은 병렬로 수행되지만, jobs.<job_id>.needs를 이용해 순서를 정할 수 있음
+- 아래는 job1 다음 job2, 그리고 job3가 수행되도록 한 것
+  - 단 job이나 job2에서 오류가 나면 수행되지 않음
+```yml
+jobs:
+  job1:
+  job2:
+    needs: job1
+  job3:
+    needs: [job1, job2]
+```
+
+## Jobs 활용 - 조건
+- Jobs.<job_id>.if
+  - if 조건이 true 인 경우만 해당 job이 수행됨
+```yml
+name: example-workflow
+on: [push]
+jobs:
+  production-deploy:
+    if: github.repository == 'octo-org/octo-repo-prod'  # 저장소가 조건에 맞을 때만
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+```
+
+## Jobs 활용 - matrix 전략
+- Jobs.<job_id>.strategy.matrix
+  - matrx에서 정의한 변수의 모든 조합에 대해 해당 job을 수행, (최대 256개)
+```yml
+jobs:
+  example_matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-20.04]
+        version: [10, 12, 14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.version }}
+```
+
+
+## Build & Test - Python
 
 
 
-## Exercise 4
-
-## Build & Test 예
-
-
-## Exercise 5
 
 # Q&A
 <!-- _class: lead -->
