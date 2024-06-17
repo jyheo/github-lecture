@@ -337,9 +337,13 @@ backgroundColor: #fff
 
 
 ## Github Pull Request
-* 권한이 없는 다른 사용자의 저장소에 변경 요청을 하는 것.
+* Pull Request는 2가지로 사용 가능
+* 1. 권한이 없는 다른 사용자의 저장소에 변경 요청을 하는 것.
     - 화면 오른쪽 위 Fork 버튼 (현재 로그인 ID: jyheo-st)
 ![](images/pull-request1.png)
+* 2. 브랜치를 만들고, 그 브랜치를 main에 merge하기 위해 공동 작업자에게 요청을 하는 것.
+    - 공동작업자는 코드를 리뷰하고 main에 머지할지 결정
+    - main 브랜치로만 머지됨
 
 
 ## Github Pull Request
