@@ -589,9 +589,27 @@ jobs:
 
 
 ## Build & Test - Python
+- 저장소 만들기
+- 다음 파일 추가 (https://github.com/jyheo/github-actions-python-example)
+    - str_util.py
+    - test_str_util.py
+    - np_util.py
+    - test_np_util.py
+- actions 에서 starter workflow로 python application추가
+  - ![](images/ci/python-application.png)
 
+## Python
+- workflow 파일을 commit/push 하면서 workflow가 동작하지만, numpy 모듈이 없어서 오류가 남.
+- requirements.txt 추가, 내용에는 numpy 추가
+    - commit/push에 의해 workflow 동작
+- 완료
+- 패키지로 만들고 publish 하는 것도 가능
 
-
+## Exercise 4
+- 파이썬 빌드 테스트 예를 따라해보기
+- setup-python 에 with cache: "pip" 를 추가해보고 생성된 cache를 확인
+![](images/ci/pip-cache.png)
+- workflow를 한번 더 동작하도록 하여, 줄어든 workflow 실행 시간을 확인
 
 # Q&A
 <!-- _class: lead -->
