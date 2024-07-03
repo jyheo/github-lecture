@@ -224,7 +224,7 @@ remotes/origin/master
 <li>이때 원격 저장소에는 없지만 로컬 저장소에만 있는 새 커밋만 보내게 됨
 <ul>
 <li>Reject 발생하면 해결 필요!</li>
-<li>원격 브랜치에 로컬 브랜치에 없는 새로운 커밋이 있을 경우 Reject</li>
+<li>원격 저장소의 브랜치에 로컬 브랜치에 없는 새로운 커밋이 있을 경우 Reject</li>
 <li>새로운 커밋을 먼저 가져와서 합친 후에 다시 시도
 <ul>
 <li>git fetch/merge 또는 git pull (뒤에 설명)</li>
@@ -232,7 +232,7 @@ remotes/origin/master
 </li>
 </ul>
 </li>
-<li>해당 브랜치가 원격 브랜치에 존재하지 않으면 새로 만들게 됨
+<li>해당 브랜치가 원격 저장소에 존재하지 않으면 새로 만들게 됨
 <ul>
 <li>원격 저장소에 새로 브랜치를 만드는 것은 조심스럽게 해야함</li>
 <li>다른 사람과 공유하는 것이기 때문에...</li>
@@ -271,7 +271,7 @@ To https://github.com/jyheo/test-repo.git
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-marpit-fragments="1" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="16" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="16" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
 <header>git/github - <a href="https://github.com/jyheo/github-lecture">https://github.com/jyheo/github-lecture</a></header>
 <h2 id="push---%EC%9B%90%EA%B2%A9-%EC%A0%80%EC%9E%A5%EC%86%8C%EC%97%90-%EB%A1%9C%EC%BB%AC-%EC%A0%80%EC%9E%A5%EC%86%8C-%EB%B3%80%EA%B2%BD-%EC%9D%B4%EB%A0%A5%EC%BB%A4%EB%B0%8B-%EB%B3%B4%EB%82%B4%EA%B8%B0-33">PUSH - 원격 저장소에 로컬 저장소 변경 이력(커밋) 보내기 (3/3)</h2>
 <ul>
@@ -294,9 +294,7 @@ To https://github.com/jyheo/test-repo.git
 </ul>
 </li>
 <li>보통 원격 이름과 로컬 브랜치 이름을 생략하고 <code>$ git push</code> 로 많이 사용</li>
-</ul>
-<ul>
-<li data-marpit-fragment="1">github 웹으로 접속하여 변경된 내용 확인 가능</li>
+<li>github 웹으로 접속하여 변경된 내용 확인 가능</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="17" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
@@ -518,12 +516,12 @@ $ git branch -vv                [트래킹 브랜치 확인]
 <li>new.c 파일이 작업 디렉토리에 보임을 확인</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-marpit-fragments="3" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="29" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="29" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
 <header>git/github - <a href="https://github.com/jyheo/github-lecture">https://github.com/jyheo/github-lecture</a></header>
 <h2 id="github-pull-request">Github Pull Request</h2>
 <ul>
-<li data-marpit-fragment="1">Pull Request는 2가지로 사용 가능</li>
-<li data-marpit-fragment="2">
+<li>Pull Request는 2가지로 사용 가능</li>
+<li>
 <ol>
 <li>권한이 없는 다른 사용자의 저장소에 변경 요청을 하는 것.</li>
 </ol>
@@ -532,7 +530,7 @@ $ git branch -vv                [트래킹 브랜치 확인]
 <img src="images/pull-request1.png" alt="" /></li>
 </ul>
 </li>
-<li data-marpit-fragment="3">
+<li>
 <ol start="2">
 <li>브랜치를 만들고, 그 브랜치를 main에 merge하기 위해 공동 작업자에게 요청을 하는 것.</li>
 </ol>
@@ -543,19 +541,19 @@ $ git branch -vv                [트래킹 브랜치 확인]
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-marpit-fragments="1" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="30" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="30" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
 <header>git/github - <a href="https://github.com/jyheo/github-lecture">https://github.com/jyheo/github-lecture</a></header>
 <h2 id="github-pull-request-1">Github Pull Request</h2>
 <ul>
-<li data-marpit-fragment="1">jyheo/test를 Fork하여 나(jyheo-st)의 저장소로 복제해 옴<br />
+<li>jyheo/test를 Fork하여 나(jyheo-st)의 저장소로 복제해 옴<br />
 <img src="images/pull-request2.png" alt="" /></li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-marpit-fragments="1" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="31" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="31" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
 <header>git/github - <a href="https://github.com/jyheo/github-lecture">https://github.com/jyheo/github-lecture</a></header>
 <h2 id="github-pull-request-2">Github Pull Request</h2>
 <ul>
-<li data-marpit-fragment="1">저장소 파일 변경
+<li>저장소 파일 변경
 <ul>
 <li>git을 이용하여 로컬로 가져와서 변경 후 push</li>
 <li>또는 웹에서 바로 편집 가능</li>
@@ -565,11 +563,11 @@ $ git branch -vv                [트래킹 브랜치 확인]
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-marpit-fragments="1" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="32" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="32" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
 <header>git/github - <a href="https://github.com/jyheo/github-lecture">https://github.com/jyheo/github-lecture</a></header>
 <h2 id="github-pull-request-3">Github Pull Request</h2>
 <ul>
-<li data-marpit-fragment="1"><strong>jyheo로 로그인하면</strong> 아래와 같은 Pull request<br />
+<li><strong>jyheo로 로그인하면</strong> 아래와 같은 Pull request<br />
 <img src="images/pull-request4.png" alt="" /></li>
 </ul>
 </section>
@@ -577,43 +575,38 @@ $ git branch -vv                [트래킹 브랜치 확인]
 <header>git/github - <a href="https://github.com/jyheo/github-lecture">https://github.com/jyheo/github-lecture</a></header>
 <h2 id="sync-a-fork">Sync a Fork</h2>
 <ul>
-<li>Fork한 저장소의 내용을 원본(upstream) 저장소의 최신 내용과 동기화 하기</li>
-<li>Fetch Upstream
+<li>Fork한 저장소의 내용을 원본(upstream) 저장소의 최신 내용과 동기화 하기
 <ul>
-<li><img src="https://docs.github.com/assets/images/help/repository/fetch-upstream-drop-down.png" alt="" style="width:400px;" /></li>
-</ul>
-</li>
-<li>Fetch and Merge
-<ul>
-<li><img src="https://docs.github.com/assets/images/help/repository/fetch-and-merge-button.png" alt="" style="width:800px;" /></li>
+<li>원본 저장소와 fork한 저장소에 새로 만든 커밋을 비교하여 merge하거나 discard하여 sync 수행</li>
+<li><img src="images/sync-fork-dropdown.webp" alt="" /></li>
 </ul>
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-marpit-fragments="8" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="34" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="34" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
 <header>git/github - <a href="https://github.com/jyheo/github-lecture">https://github.com/jyheo/github-lecture</a></header>
 <h2 id="github-%EA%B3%B5%EB%8F%99-%EC%9E%91%EC%97%85-%EC%B4%88%EA%B0%84%EB%8B%A8-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4">Github 공동 작업 초간단 시나리오</h2>
 <ul>
-<li data-marpit-fragment="1">A가 오픈 소스 프로젝트 저장소 ‘bestsw’를 만들어 둔 상황</li>
-<li data-marpit-fragment="2">B가 ‘bestsw’가 마음에 들어서 사용하다가 수정을 할 필요가 생겼음</li>
-<li data-marpit-fragment="3">B는 Github의 ‘bestsw’ 저장소를 자신의 저장소로 fork해옴</li>
-<li data-marpit-fragment="4">Fork한 ‘B/bestsw’를 수정</li>
-<li data-marpit-fragment="5">수정한 내용을 반영해달라고 A에게 pull request 보냄</li>
-<li data-marpit-fragment="6">A가 B의 수정 내용을 반영</li>
-<li data-marpit-fragment="7">A가 생각해보니 B가 프로젝트에 기여를 잘 할 것 같아서 공동 개발자(Collaborators)로 추가함</li>
-<li data-marpit-fragment="8">이제부터 B는 직접 ‘bestsw’ 저장소에 수정 할 수 있음</li>
+<li>A가 오픈 소스 프로젝트 저장소 ‘bestsw’를 만들어 둔 상황</li>
+<li>B가 ‘bestsw’가 마음에 들어서 사용하다가 수정을 할 필요가 생겼음</li>
+<li>B는 Github의 ‘bestsw’ 저장소를 자신의 저장소로 fork해옴</li>
+<li>Fork한 ‘B/bestsw’를 수정</li>
+<li>수정한 내용을 반영해달라고 A에게 pull request 보냄</li>
+<li>A가 B의 수정 내용을 반영</li>
+<li>A가 생각해보니 B가 프로젝트에 기여를 잘 할 것 같아서 공동 개발자(Collaborators)로 추가함</li>
+<li>이제부터 B는 직접 ‘bestsw’ 저장소에 수정 할 수 있음</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-marpit-fragments="6" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="35" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="35" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="35">
 <header>git/github - <a href="https://github.com/jyheo/github-lecture">https://github.com/jyheo/github-lecture</a></header>
 <h2 id="exercise-3">Exercise 3</h2>
 <ul>
-<li data-marpit-fragment="1"><a href="https://github.com/jyheo/test">https://github.com/jyheo/test</a> 를 Fork</li>
-<li data-marpit-fragment="2">Fork한 저장소를 로컬에 clone</li>
-<li data-marpit-fragment="3">fork_pull_request.c를 정상 동작하도록 수정</li>
-<li data-marpit-fragment="4">Commit/Push</li>
-<li data-marpit-fragment="5">Pull request 생성</li>
-<li data-marpit-fragment="6">Collaborator가 되면
+<li><a href="https://github.com/jyheo/test">https://github.com/jyheo/test</a> 를 Fork</li>
+<li>Fork한 저장소를 로컬에 clone</li>
+<li>fork_pull_request.c를 정상 동작하도록 수정</li>
+<li>Commit/Push</li>
+<li>Pull request 생성</li>
+<li>Collaborator가 되면
 <ul>
 <li>저장소(<a href="https://github.com/jyheo/test">https://github.com/jyheo/test</a>)를 clone</li>
 <li>name 디렉터리 밑에 자신의 id나 이름으로 파일 생성</li>

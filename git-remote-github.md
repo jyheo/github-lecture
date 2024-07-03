@@ -136,10 +136,10 @@ backgroundColor: #fff
     - [로컬 브랜치 이름] 으로 지정한 로컬 브랜치를 [원격 이름]에 설정된 원격 저장소의 같은 이름의 브랜치로 보냄
     - 이때 원격 저장소에는 없지만 로컬 저장소에만 있는 새 커밋만 보내게 됨
         - Reject 발생하면 해결 필요!
-        - 원격 브랜치에 로컬 브랜치에 없는 새로운 커밋이 있을 경우 Reject
+        - 원격 저장소의 브랜치에 로컬 브랜치에 없는 새로운 커밋이 있을 경우 Reject
         - 새로운 커밋을 먼저 가져와서 합친 후에 다시 시도
             - git fetch/merge 또는 git pull (뒤에 설명)
-    - 해당 브랜치가 원격 브랜치에 존재하지 않으면 새로 만들게 됨
+    - 해당 브랜치가 원격 저장소에 존재하지 않으면 새로 만들게 됨
         - 원격 저장소에 새로 브랜치를 만드는 것은 조심스럽게 해야함
         - 다른 사람과 공유하는 것이기 때문에...
 
@@ -181,7 +181,7 @@ backgroundColor: #fff
     - 앞의 예에서는 로컬 브랜치 master를 원격 origin/master 브랜치로 push함
     - 즉, ``` $ git push origin master ``` 와 동일한 결과
 - 보통 원격 이름과 로컬 브랜치 이름을 생략하고 ``` $ git push ``` 로 많이 사용
-* github 웹으로 접속하여 변경된 내용 확인 가능
+- github 웹으로 접속하여 변경된 내용 확인 가능
 
 
 ## FETCH - 원격 저장소에서 최근 커밋(변경 이력) 가져오기
@@ -337,22 +337,22 @@ backgroundColor: #fff
 
 
 ## Github Pull Request
-* Pull Request는 2가지로 사용 가능
-* 1. 권한이 없는 다른 사용자의 저장소에 변경 요청을 하는 것.
+- Pull Request는 2가지로 사용 가능
+- 1. 권한이 없는 다른 사용자의 저장소에 변경 요청을 하는 것.
     - 화면 오른쪽 위 Fork 버튼 (현재 로그인 ID: jyheo-st)
 ![](images/pull-request1.png)
-* 2. 브랜치를 만들고, 그 브랜치를 main에 merge하기 위해 공동 작업자에게 요청을 하는 것.
+- 2. 브랜치를 만들고, 그 브랜치를 main에 merge하기 위해 공동 작업자에게 요청을 하는 것.
     - 공동작업자는 코드를 리뷰하고 main에 머지할지 결정
     - main 브랜치로만 머지됨
 
 
 ## Github Pull Request
-* jyheo/test를 Fork하여 나(jyheo-st)의 저장소로 복제해 옴
+- jyheo/test를 Fork하여 나(jyheo-st)의 저장소로 복제해 옴
 ![](images/pull-request2.png)
 
 
 ## Github Pull Request
-* 저장소 파일 변경
+- 저장소 파일 변경
     - git을 이용하여 로컬로 가져와서 변경 후 push
     - 또는 웹에서 바로 편집 가능
     - New pull request 버튼, Create Pull Request
@@ -360,36 +360,34 @@ backgroundColor: #fff
 
 
 ## Github Pull Request
-* **jyheo로 로그인하면** 아래와 같은 Pull request
+- **jyheo로 로그인하면** 아래와 같은 Pull request
 ![](images/pull-request4.png)
 
 
 ## Sync a Fork
 - Fork한 저장소의 내용을 원본(upstream) 저장소의 최신 내용과 동기화 하기
-- Fetch Upstream
-    - ![w:400](https://docs.github.com/assets/images/help/repository/fetch-upstream-drop-down.png)
-- Fetch and Merge
-    - ![w:800](https://docs.github.com/assets/images/help/repository/fetch-and-merge-button.png)
+    - 원본 저장소와 fork한 저장소에 새로 만든 커밋을 비교하여 merge하거나 discard하여 sync 수행
+    - ![](images/sync-fork-dropdown.webp)
 
 
 ## Github 공동 작업 초간단 시나리오
-* A가 오픈 소스 프로젝트 저장소 ‘bestsw’를 만들어 둔 상황
-* B가 ‘bestsw’가 마음에 들어서 사용하다가 수정을 할 필요가 생겼음
-* B는 Github의 ‘bestsw’ 저장소를 자신의 저장소로 fork해옴
-* Fork한 ‘B/bestsw’를 수정
-* 수정한 내용을 반영해달라고 A에게 pull request 보냄
-* A가 B의 수정 내용을 반영
-* A가 생각해보니 B가 프로젝트에 기여를 잘 할 것 같아서 공동 개발자(Collaborators)로 추가함
-* 이제부터 B는 직접 ‘bestsw’ 저장소에 수정 할 수 있음
+- A가 오픈 소스 프로젝트 저장소 ‘bestsw’를 만들어 둔 상황
+- B가 ‘bestsw’가 마음에 들어서 사용하다가 수정을 할 필요가 생겼음
+- B는 Github의 ‘bestsw’ 저장소를 자신의 저장소로 fork해옴
+- Fork한 ‘B/bestsw’를 수정
+- 수정한 내용을 반영해달라고 A에게 pull request 보냄
+- A가 B의 수정 내용을 반영
+- A가 생각해보니 B가 프로젝트에 기여를 잘 할 것 같아서 공동 개발자(Collaborators)로 추가함
+- 이제부터 B는 직접 ‘bestsw’ 저장소에 수정 할 수 있음
 
 
 ## Exercise 3
-* https://github.com/jyheo/test 를 Fork
-* Fork한 저장소를 로컬에 clone
-* fork_pull_request.c를 정상 동작하도록 수정
-* Commit/Push
-* Pull request 생성
-* Collaborator가 되면
+- https://github.com/jyheo/test 를 Fork
+- Fork한 저장소를 로컬에 clone
+- fork_pull_request.c를 정상 동작하도록 수정
+- Commit/Push
+- Pull request 생성
+- Collaborator가 되면
     - 저장소(https://github.com/jyheo/test)를 clone
     - name 디렉터리 밑에 자신의 id나 이름으로 파일 생성
     - Commit/Push
