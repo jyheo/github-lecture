@@ -57,11 +57,11 @@
 <ul>
 <li>Gihub에서 제공하는 CI/CD 플랫폼</li>
 <li>빌드, 테스트, 배포를 자동화하는 workflow를 만들어 사용</li>
-<li>저장소(repository)로 pull 할 때마다 빌드와 테스트하는 workflow를 동작시킴</li>
+<li>예를 들어, 저장소(repository)로 push 할 때마다 빌드와 테스트하는 workflow를 동작시킴</li>
 <li>workflow를 Github에서 제공하는 리눅스, 윈도우, MacOS 가상 머신에서 동작시키거나 자신의 데이터 센터나 다른 클라우드에서도 동작 가능</li>
 <li>Workflow
 <ul>
-<li>pull request나 issue 생성과 같은 이벤트에 의해 자동 실행되는 workflow를 정의</li>
+<li>push나, pull request, issue 생성과 같은 이벤트에 의해 자동 실행되는 workflow를 정의</li>
 <li>순차 또는 병렬로 실행 가능한 하나 이상의 작업으로 구성됨</li>
 <li>각 작업은 가상 머신이나 컨테이너에서 수행되며, 미리 정의된 스크립트나 액션(action)을 실행</li>
 </ul>
@@ -180,7 +180,7 @@
 <header>git/github - <a href="https://github.com/jyheo/github-lecture">https://github.com/jyheo/github-lecture</a></header>
 <h2 id="%EA%B0%84%EB%8B%A8%ED%95%9C-workflow-%EB%A7%8C%EB%93%A4%EA%B8%B0-1">간단한 Workflow 만들기</h2>
 <ul>
-<li>name: workflow 이름, 저장소의 Actions 탱베 표시됨, 생략하면 파일 이름이 사용됨</li>
+<li>name: workflow 이름, 저장소의 Actions 탭에 표시됨, 생략하면 파일 이름이 사용됨</li>
 <li>run-name: 실행 중인 workflow 이름, 저장소의 Actions 탭에 표시됨
 <ul>
 <li>github.actor 는 workflow 트리거시킨 사용자 이름</li>
@@ -431,10 +431,10 @@
 </ul>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-yml"><span class="hljs-attr">steps:</span>
   <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">if</span> <span class="hljs-string">condition</span>
-  <span class="hljs-attr">run:</span> <span class="hljs-string">node</span> <span class="hljs-string">client.js</span>
-  <span class="hljs-attr">if:</span> <span class="hljs-string">${{</span> <span class="hljs-string">success()</span> <span class="hljs-string">}}</span>  <span class="hljs-comment"># 앞의 모든 step이 성공일 경우 이 step을 실행</span>
-  <span class="hljs-attr">env:</span>
-    <span class="hljs-attr">MY_ENV_VAR:</span> <span class="hljs-string">${{</span> <span class="hljs-number">1</span><span class="hljs-string">+1</span> <span class="hljs-string">}}</span>  <span class="hljs-comment"># 수식으로 환경 변수 값 지정</span>
+    <span class="hljs-attr">run:</span> <span class="hljs-string">node</span> <span class="hljs-string">client.js</span>
+    <span class="hljs-attr">if:</span> <span class="hljs-string">${{</span> <span class="hljs-string">success()</span> <span class="hljs-string">}}</span>  <span class="hljs-comment"># 앞의 모든 step이 성공일 경우 이 step을 실행</span>
+    <span class="hljs-attr">env:</span>
+      <span class="hljs-attr">MY_ENV_VAR:</span> <span class="hljs-string">${{</span> <span class="hljs-number">1</span><span class="hljs-string">+1</span> <span class="hljs-string">}}</span>  <span class="hljs-comment"># 수식으로 환경 변수 값 지정</span>
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-header="git/github - https://github.com/jyheo/github-lecture" data-background-color="#fff" data-theme="my-theme" data-heading-divider="2" lang="ko-KR" data-marpit-pagination="25" style="--paginate:true;--header:git/github - https://github.com/jyheo/github-lecture;--background-color:#fff;--theme:my-theme;--heading-divider:2;background-color:#fff;background-image:none;" data-marpit-pagination-total="46">
@@ -480,7 +480,7 @@
 </li>
 <li>Workflow에서 변수를 사용하려면 Expression에서 사용해야 함
 <ul>
-<li>예) name: ${{ DAY_OF_WEEK }}</li>
+<li>예) name: ${{ env.DAY_OF_WEEK }}</li>
 </ul>
 </li>
 </ul>
@@ -763,7 +763,7 @@
 <li>기본적으로 job 들은 병렬로 수행되지만, jobs.&lt;job_id&gt;.needs를 이용해 순서를 정할 수 있음</li>
 <li>아래는 job1 다음 job2, 그리고 job3가 수행되도록 한 것
 <ul>
-<li>단 job이나 job2에서 오류가 나면 수행되지 않음</li>
+<li>단 job1이나 job2에서 오류가 나면 수행되지 않음</li>
 </ul>
 </li>
 </ul>
