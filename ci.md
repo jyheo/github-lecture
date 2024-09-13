@@ -30,10 +30,10 @@ backgroundColor: #fff
 ## Github Actions
 - Gihub에서 제공하는 CI/CD 플랫폼
 - 빌드, 테스트, 배포를 자동화하는 workflow를 만들어 사용
-- 저장소(repository)로 pull 할 때마다 빌드와 테스트하는 workflow를 동작시킴
+- 예를 들어, 저장소(repository)로 push 할 때마다 빌드와 테스트하는 workflow를 동작시킴
 - workflow를 Github에서 제공하는 리눅스, 윈도우, MacOS 가상 머신에서 동작시키거나 자신의 데이터 센터나 다른 클라우드에서도 동작 가능
 - Workflow
-    - pull request나 issue 생성과 같은 이벤트에 의해 자동 실행되는 workflow를 정의
+    - push나, pull request, issue 생성과 같은 이벤트에 의해 자동 실행되는 workflow를 정의
     - 순차 또는 병렬로 실행 가능한 하나 이상의 작업으로 구성됨
     - 각 작업은 가상 머신이나 컨테이너에서 수행되며, 미리 정의된 스크립트나 액션(action)을 실행
 
@@ -109,7 +109,7 @@ jobs:
  ```
 
 ## 간단한 Workflow 만들기
-- name: workflow 이름, 저장소의 Actions 탱베 표시됨, 생략하면 파일 이름이 사용됨
+- name: workflow 이름, 저장소의 Actions 탭에 표시됨, 생략하면 파일 이름이 사용됨
 - run-name: 실행 중인 workflow 이름, 저장소의 Actions 탭에 표시됨
     - github.actor 는 workflow 트리거시킨 사용자 이름
 - on: 트리거 이벤트 정의
@@ -290,10 +290,10 @@ jobs:
 ```yml
 steps:
   - name: if condition
-  run: node client.js
-  if: ${{ success() }}  # 앞의 모든 step이 성공일 경우 이 step을 실행
-  env:
-    MY_ENV_VAR: ${{ 1+1 }}  # 수식으로 환경 변수 값 지정
+    run: node client.js
+    if: ${{ success() }}  # 앞의 모든 step이 성공일 경우 이 step을 실행
+    env:
+      MY_ENV_VAR: ${{ 1+1 }}  # 수식으로 환경 변수 값 지정
 ```
 
 ## Expression 에서 Context 사용
@@ -317,7 +317,7 @@ steps:
 - 변수(환경변수)를 인식하는 프로그램에서는 바로 사용 가능
   - 예) echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
 - Workflow에서 변수를 사용하려면 Expression에서 사용해야 함
-  - 예) name: ${{ DAY_OF_WEEK }}
+  - 예) name: ${{ env.DAY_OF_WEEK }}
 
 
 ## Context 사용 예
@@ -542,7 +542,7 @@ steps:
 - workflow는 1개 이상의 job으로 이루어짐
 - 기본적으로 job 들은 병렬로 수행되지만, jobs.<job_id>.needs를 이용해 순서를 정할 수 있음
 - 아래는 job1 다음 job2, 그리고 job3가 수행되도록 한 것
-  - 단 job이나 job2에서 오류가 나면 수행되지 않음
+  - 단 job1이나 job2에서 오류가 나면 수행되지 않음
 ```yml
 jobs:
   job1:
