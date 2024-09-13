@@ -59,17 +59,17 @@ backgroundColor: #fff
 - 일반적으로 원격 저장소를 만들고, 로컬 저장소로 복제(clone)하는 것이 간편함
 - clone할 원격 주소 알아오기  (github의 경우)
 ![](images/clone-url.png)
-- ``` $git clone [원격 주소] ```
-    ```bash
-    $ git clone https://github.com/jyheo/test2.git
+- ``` >git clone [원격 주소] ```
+    ```
+    > git clone https://github.com/jyheo/test2.git
     Cloning into 'test2'...
     remote: Counting objects: 5, done.
     remote: Compressing objects: 100% (4/4), done.
     remote: Total 5 (delta 0), reused 0 (delta 0), pack-reused 0					
     Unpacking objects: 100% (5/5), done.
     Checking connectivity... done.
-    $ ls test2                                 [test2라는 폴더가 새로 생성됨]
-    LICENSE  README.md
+    > ls test2                                 [test2라는 폴더가 새로 생성됨]
+    Directory: C:\Users\jyheo\test2
     ```
 
 ## 최초 동기화 방법2 - 원격 저장소 생성과 로컬 저장소 내용 보내기
@@ -77,11 +77,11 @@ backgroundColor: #fff
 - 원격 저장소 생성 시 어떠한 파일도 생성되지 않게 함
     - 즉 원격 저장소가 비어 있는 상태
     - 로컬 저장소를 원격 저장소에 넣는 방법
-        ```bash
-        $ git remote add origin https://github.com/jyheo/test2.git
-        $ git branch -M master        [현재 브랜치 이름을 master로 변경,
+        ```
+        > git remote add origin https://github.com/jyheo/test2.git
+        > git branch -M master        [현재 브랜치 이름을 master로 변경,
                                          이미 master라면 할 필요 없음]
-        $ git push -u origin master   [ -u 옵션은 tracking 브랜치 연결을 위해 필요]
+        > git push -u origin master   [ -u 옵션은 tracking 브랜치 연결을 위해 필요]
         ```
     - remote 명령은 원격 관리
     - push 명령은 로컬 저장소의 지정한 브랜치의 커밋을 원격으로 보냄
@@ -89,9 +89,9 @@ backgroundColor: #fff
 
 
 ## 원격 저장소 확인
-- ``` $ git remote -v ```
-    ```bash
-    $ git remote -v
+- ``` > git remote -v ```
+    ```
+    > git remote -v
     origin  https://github.com/jyheo/test2.git (fetch)
     origin  https://github.com/jyheo/test2.git (push)
     ```
@@ -99,18 +99,19 @@ backgroundColor: #fff
     - push 는 로컬저장소에서 원격 저장소로 변경 이력을 보내는 것
     - 보통 fetch와 push 주소는 동일하지만, 특별한 경우 다를 수도 있음
         - code review system을 쓰는 경우
-    - ``` $ git remote add ``` 를 이용하여 원격 저장소를 추가할 수도 있음
+    - ``` > git remote add ``` 를 이용하여 원격 저장소를 추가할 수도 있음
 - git clone을 한 경우 origin이란 이름으로 원격 저장소가 자동으로 지정됨
 
 
 ## 원격 브랜치 Remote Branch
-- ``` $ git branch -a ```
-    ```bash
-    $ git branch -a
+- ``` > git branch -a ```
+    ```
+    > git branch -a
     * master
     remotes/origin/HEAD -> origin/master
     remotes/origin/master
     ```
+- -a 옵션은 로컬, 원격 브랜치를 모두 표시
 - master는 로컬 브랜치
 - origin/master는 원격 브랜치
 
@@ -132,7 +133,7 @@ backgroundColor: #fff
 
 
 ## PUSH - 원격 저장소에 로컬 저장소 변경 이력(커밋) 보내기 (1/3)
-- ``` $ git push [원격 이름] [로컬 브랜치 이름] ```
+- ``` > git push [원격 이름] [로컬 브랜치 이름] ```
     - [로컬 브랜치 이름] 으로 지정한 로컬 브랜치를 [원격 이름]에 설정된 원격 저장소의 같은 이름의 브랜치로 보냄
     - 이때 원격 저장소에는 없지만 로컬 저장소에만 있는 새 커밋만 보내게 됨
         - Reject 발생하면 해결 필요!
@@ -145,19 +146,19 @@ backgroundColor: #fff
 
 
 ## PUSH - 원격 저장소에 로컬 저장소 변경 이력(커밋) 보내기 (2/3)
-- ``` $ git push [원격 이름] [로컬 브랜치 이름] ``` 예시
-    ```bash
-    $ git commit -m "test"        [새 변경 이력 생성]
+- ``` > git push [원격 이름] [로컬 브랜치 이름] ``` 예시
+    ```
+    > git commit -m "test"        [새 변경 이력 생성]
     [master 4a52752] test
     1 file changed, 1 insertion(+)
     create mode 100644 test.c
-    $ git status                  [현재 상태 확인]
+    > git status                  [현재 상태 확인]
     On branch master
     Your branch is ahead of 'origin/master' by 1 commit.
     (use "git push" to publish your local commits)
 
     nothing to commit, working tree clean
-    $ git push                    [git push 원격 이름과 로컬 브랜치 이름 생략]
+    > git push                    [git push 원격 이름과 로컬 브랜치 이름 생략]
     Username for 'https://github.com': jyheo
     Password for 'https://jyheo@github.com':
     Enumerating objects: 4, done.
@@ -179,8 +180,8 @@ backgroundColor: #fff
 - git push할 때 원격 이름을 생략하면 default는 origin
 - git push할 때 로컬 브랜치 이름을 생략하면 현재 로컬 브랜치
     - 앞의 예에서는 로컬 브랜치 master를 원격 origin/master 브랜치로 push함
-    - 즉, ``` $ git push origin master ``` 와 동일한 결과
-- 보통 원격 이름과 로컬 브랜치 이름을 생략하고 ``` $ git push ``` 로 많이 사용
+    - 즉, ``` > git push origin master ``` 와 동일한 결과
+- 보통 원격 이름과 로컬 브랜치 이름을 생략하고 ``` > git push ``` 로 많이 사용
 - github 웹으로 접속하여 변경된 내용 확인 가능
 
 
@@ -188,9 +189,9 @@ backgroundColor: #fff
 - 가져오기 전에 먼저 원격 저장소에 로컬 저장소 보다 새로운 커밋이 있어야 함
 - github의 경우 웹으로 접속하여 파일을 변경하거나 생성할 수 있음
     - 이 예제에서는 README.md 파일에 "new test"라는 내용의 줄을 추가하여 수정한 것으로 함
-- ``` $ git fetch [원격_이름] ```
+- ``` > git fetch [원격_이름] ```
     ```
-    $ git fetch                  [원격 이름을 생략하면 default는 origin]
+    > git fetch                  [원격 이름을 생략하면 default는 origin]
     remote: Enumerating objects: 5, done.
     remote: Counting objects: 100% (5/5), done.
     remote: Compressing objects: 100% (2/2), done.
@@ -198,20 +199,20 @@ backgroundColor: #fff
     Unpacking objects: 100% (3/3), 654 bytes | 43.00 KiB/s, done.
     From https://github.com/jyheo/test-repo
     4a52752..8ef157d  master     -> origin/master
-    $ cat README.md               [커밋을 가져오기만 하고 로컬 브랜치에 합치지는 않음]
+    > cat README.md               [커밋을 가져오기만 하고 로컬 브랜치에 합치지는 않음]
     test
     ```
 
 ## MERGE - 원격 저장소에서 가져온 커밋을 로컬 브랜치와 합치기
--  ``` $ git merge [브랜치이름] ```
-    ```bash
-    $ git merge origin/master
-    $ git merge                  [브랜치이름 생략하면 현재 브랜치의 트래킹 브랜치]
+-  ``` > git merge [브랜치이름] ```
+    ```
+    > git merge origin/master
+    > git merge                  [브랜치이름 생략하면 현재 브랜치의 트래킹 브랜치]
     Updating 4a52752..8ef157d
     Fast-forward
     README.md | 1 +
     1 file changed, 1 insertion(+)
-    $ cat README.md
+    > cat README.md
     test                       [합쳐진 결과로 한줄 추가된 것이 확인 됨]
     new test
     ```
@@ -223,11 +224,11 @@ backgroundColor: #fff
 
 
 ## PUSH - Reject 해결 : Fetch + Merge
-- $ git fetch origin
+- git fetch origin
 	- 원격지 origin의 최신 내용(커밋)을 가져옴  
 	![](images/rbranch3.png)
 - 현재 브랜치(여기에서는 master)에 원격지 브랜치를 merge
-	- ``` $ git merge origin/master ```
+	- ``` > git merge origin/master ```
 - 다시 push 시도
 
 
@@ -246,9 +247,9 @@ backgroundColor: #fff
     - git push -u origin master 할 때 -u 옵션 사용
         - 로컬 브랜치 master는 원격 브랜치 master의 트래킹 브랜치가 됨
     - git clone으로 로컬 저장소를 만든 경우, 트래킹 브랜치가 자동으로 지정됨
-- 트래킹 브랜치 확인 ``` $ git branch -vv ```
-    ```bash
-    $ git branch -vv
+- 트래킹 브랜치 확인 ``` > git branch -vv ```
+    ```
+    > git branch -vv
     * master 4a52752 [origin/master] test
     ```
     - 로컬의 master 브랜치가 원격 origin의 master 브랜치를 트래킹하고 있음
@@ -256,8 +257,8 @@ backgroundColor: #fff
 
 ## git pull --rebase = fetch + rebase
 - merge 대신 rebase를 사용하는 방법
-- $ git checkout master
-- $ git rebase origin/master
+- git checkout master
+- git rebase origin/master
 
 
 ## Exercise 1
@@ -275,17 +276,17 @@ backgroundColor: #fff
 
 ## 브랜치 공유 - 로컬 브랜치 Push
 - 브랜치를 원격지에 올려서 공유하기
-	```bash
-	$ git branch testing                                [로컬 브랜치]
-	$ git checkout testing
+	```
+	> git branch testing                                [로컬 브랜치]
+	> git checkout testing
 	Switched to branch 'testing'
-	$ touch testfile
-	$ git add testfile
-	$ git commit -m "testfile added"
+	> echo "" > testfile
+	> git add testfile
+	> git commit -m "testfile added"
 	[testing daf25d2] testfile added
 	 1 file changed, 0 insertions(+), 0 deletions(-)
 	 create mode 100644 testing
-	$ git push -u origin testing                           [원격지 origin에 testing 브랜치 push]
+	> git push -u origin testing                           [원격지 origin에 testing 브랜치 push]
 	Username for 'https://github.com': jyheo
 	Password for 'https://jyheo@github.com':
 	Counting objects: 3, done.
@@ -306,19 +307,19 @@ backgroundColor: #fff
 ## 브랜치 공유 - 원격 저장소 브랜치 로컬로 가져오기
 - 트래킹 브랜치
 	- 원격지의 브랜치로 작업하기
-- ``` $ git checkout -b [로컬 브랜치] [원격 브랜치] ```
-	```bash
-	$ git fetch origin         [원격 저장소 내용 최신으로 가져오기]
-	$ git branch -a
+- ``` > git checkout -b [로컬 브랜치] [원격 브랜치] ```
+	```
+	> git fetch origin         [원격 저장소 내용 최신으로 가져오기]
+	> git branch -a
 	* master
 	  remotes/origin/HEAD -> origin/master
 	  remotes/origin/master
 	  remotes/origin/new
 	  remotes/origin/testing
-	$ git checkout -b testing origin/testing
+	> git checkout -b testing origin/testing
 	Branch testing set up to track remote branch testing from origin.
 	Switched to a new branch 'testing'
-	$ git branch -vv                [트래킹 브랜치 확인]
+	> git branch -vv                [트래킹 브랜치 확인]
 	  master  8f6ad29 [origin/master] Update jyheo
 	* testing 16fbdb2 [origin/testing] hello
 	```
@@ -393,6 +394,6 @@ backgroundColor: #fff
     - Commit/Push
     - 일정 시간 후에 다른 사람이 변경한 내용 가져오기(fetch/merge)
         ```
-        $ git pull
+        > git pull
         ```
 

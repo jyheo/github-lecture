@@ -28,21 +28,23 @@ backgroundColor: #fff
     - 그렇다고 다른 브랜치보다 특별한 것은 없음
 - HEAD
     - 현재 사용중인 브랜치의 가장 최근 커밋을 가리키는 포인터
-    ```bash
-    $ git branch -a      브랜치 목록 보기
+    ```
+    > git branch
     * master
-      remotes/origin/HEAD -> origin/master
-      remotes/origin/master
-      remotes/origin/new
+    testing
+    > git log
+    commit c55e7eb03723795df0a41203df2242c06a82fc5b (HEAD -> master)
+    Author: Junyoung Heo <jyheo0@gmail.com>
+    Date:   Fri Sep 13 22:49:45 2024 +0900
     ```
 
 
 ## 브랜치 생성
-- $ git branch [브랜치 이름] [시작위치(생략가능)]
+- git branch [브랜치 이름] [시작위치(생략가능)]
     - 시작위치를 생략하면 HEAD가 됨, 커밋ID나 Tag 이름 가능
-    ```bash
-    $ git branch testing
-    $ git branch -a
+    ```
+    > git branch testing
+    > git branch
     * master
       testing  
     ```
@@ -52,11 +54,11 @@ backgroundColor: #fff
 
 ## 작업 브랜치 변경
 - 현재 작업 중인 브랜치를 다른 것으로 변경
-    - $ git checkout [브랜치_이름]
-    ```bash
-    $ git checkout testing
+    - git checkout [브랜치_이름]
+    ```
+    > git checkout testing
     Switched to branch 'testing'
-    $ git branch -a
+    > git branch
       master
     * testing
     ```
@@ -65,10 +67,10 @@ backgroundColor: #fff
 
 ## 작업 브랜치 변경
 - 변경된 브랜치(testing)에서 커밋을 하면.
-    ```bash
-    $ touch test.c
-    $ git add test.c
-    $ git commit -m "Add test.c"
+    ```
+    > echo "" > test.c
+    > git add test.c
+    > git commit -m "Add test.c"
     [testing `6888fc3`] Add test.c
      1 file changed, 0 insertions(+), 0 deletions(-)
      create mode 100644 test.c
@@ -78,8 +80,8 @@ backgroundColor: #fff
 
 ## 작업 브랜치 변경
 - 다시 master 브랜치로 변경
-    ```bash
-    $ git checkout master
+    ```
+    > git checkout master
     Switched to branch 'master'
     Your branch is up-to-date with 'origin/master'.
     ```
@@ -90,9 +92,9 @@ backgroundColor: #fff
 
 ## 작업 브랜치 변경
 - Master 브랜치에서 커밋을 하면.
-    ```bash
-    $ vi fork_pull_request.c
-    $ git commit -a -m "Add a new comment"
+    ```
+    > notepad newfile.c
+    > git commit -a -m "Add a new comment"
     [master `f1f2a4c`] Add a new comment
      1 file changed, 1 insertion(+)
     ```
@@ -100,26 +102,31 @@ backgroundColor: #fff
 
 
 ## 브랜치 합치기 Merge
-- $ git merge [현재 브랜치에 합칠 브랜치]
+- git merge [현재 브랜치에 합칠 브랜치]
     - master 브랜치에 testing 브랜치 내용을 합침
-    ```bash
-    $ git branch
+    ```
+    > git branch
     * master
       testing
-    $ git merge testing
+    > git merge testing
     Merge made by the 'recursive' strategy.
         test.c | 0
         1 file changed, 0 insertions(+), 0 deletions(-)
         create mode 100644 test.c
-    $ ls
-    LICENSE  README.md  fork_pull_request.c  name  test.c
+    > ls
+        Directory: C:\Users\jyheo\my_proj
+    Mode                 LastWriteTime         Length Name
+    ----                 -------------         ------ ----
+    -a---        2024-09-13 오후 10:37             18 newfile
+    -a---        2024-09-13 오후 10:37             14 newfile2
+    -a---        2024-09-13 오후 10:50              2 test.c
     ```
 
 
 ## 브랜치 합치기 Merge
 - Merge한 결과는.
-    ```bash
-    $ git log --oneline --decorate --graph --all
+    ```
+    > git log --oneline --decorate --graph --all
     *   1d4fa7c (HEAD -> master) Merge branch 'testing'
     |\  
     | * 6888fc3 (testing) added test.c
@@ -143,28 +150,28 @@ backgroundColor: #fff
 
 ## 브랜치&머지 예제
 - Iss53 브랜치를 만들어서 새 기능 추가 작업 상황
-    ```bash
-    $ git checkout -b iss53
+    ```
+    > git checkout -b iss53
     Switched to a new branch 'iss53'
-    $ vi main.c
-    $ git commit -a -m "Print hello"
+    > notepad main.c
+    > git commit -a -m "Print hello"
     [iss53 C3] Print hello
      1 file changed, 5 insertions(+)
     ```
     ![](images/branch-ex1.png)
-- ``` $ git checkout -b iss53 ``` 에서 -b 옵션은 branch를 새로 만들면서 변경함
-    - 즉, ``` $ git branch iss53 ``` 와 ``` $ git checkout iss53 ``` 를 합친 것
+- ``` > git checkout -b iss53 ``` 에서 -b 옵션은 branch를 새로 만들면서 변경함
+    - 즉, ``` > git branch iss53 ``` 와 ``` > git checkout iss53 ``` 를 합친 것
 
 
 ## 브랜치&머지 예제
 - 제품 버그 수정을 위해 master 브랜치로 변경하고 hotfix 브랜치 생성, 버그 수정
-    ```bash
-    $ git checkout master
+    ```
+    > git checkout master
     Switched to branch 'master'
-    $ git checkout -b hotfix
+    > git checkout -b hotfix
     Switched to a new branch 'hotfix'
-    $ vi main.c
-    $ git commit -a -m "Add return 1"
+    > notepad main.c
+    > git commit -a -m "Add return 1"
     [hotfix C4] Add return 1
      1 file changed, 1 insertion(+), 1 deletion(-)
     ```
@@ -173,10 +180,10 @@ backgroundColor: #fff
 
 ## 브랜치&머지 예제
 - 버그 수정한 hotfix 브랜치를 테스트 완료 후 hotfix 브랜치를 master 브랜치로 머지
-    ```bash
-    $ git checkout master
+    ```
+    > git checkout master
     Switched to branch 'master'
-    $ git merge hotfix
+    > git merge hotfix
     Updating b117ce3..eaa3e91
     Fast-forward
      main.c | 2 +-
@@ -187,13 +194,13 @@ backgroundColor: #fff
 
 ## 브랜치&머지 예제
 - 불필요한 hotfix 브랜치를 제거하고 이전에 하던 작업 iss53으로 돌아가서 새 기능 추가 진행
-    ```bash
-    $ git branch -d hotfix           [-d 옵션은 브랜치 삭제]
+    ```
+    > git branch -d hotfix           [-d 옵션은 브랜치 삭제]
     Deleted branch hotfix (was eaa3e91).
-    $ git checkout iss53
+    > git checkout iss53
     Switched to branch 'iss53'
-    $ vi main.c
-    $ git commit -a -m "Print world"
+    > notepad main.c
+    > git commit -a -m "Print world"
     [iss53 C5] Print world
     1 file changed, 1 insertion(+)
     ```
@@ -202,10 +209,10 @@ backgroundColor: #fff
 
 ## 브랜치&머지 예제
 - 새 기능 추가 iss53 작업을 완료하고 master로 머지 시키기
-    ```bash
-    $ git checkout master
+    ```
+    > git checkout master
     Switched to branch 'master'
-    $ git merge iss53
+    > git merge iss53
     Auto-merging main.c
     CONFLICT (content): Merge conflict in main.c
     Automatic merge failed; fix conflicts and then commit the result.
@@ -220,33 +227,33 @@ backgroundColor: #fff
 - Conflict 해결
     - 해당 파일을 열어보면 어디에서 conflict가 발생 했는지 확인 가능. 파일 수정하여 해결 후 커밋.  
     ![](images/branch-ex5.png)
-    ```bash
-    $ git commit -a
+    ```
+    > git commit -a
     [master C6] Merge branch 'iss53'
     ```
     ![w:500px](images/branch-ex6.png)
 
 <!--
-참고: $ git mergetool
+참고: > git mergetool
 -->
 
 ## 브랜치&머지 예제
 - 브랜치 관리
-    ```bash
-    $ git branch                         [브랜치를 모두 보여줌]
+    ```
+    > git branch                         [브랜치를 모두 보여줌]
       iss53
     * master
       testing
-    $ git branch -v                    [각 브랜치의 마지막 커밋]
+    > git branch -v                    [각 브랜치의 마지막 커밋]
       iss53   2f788e8 return -1
     * master  5d9b98a Merge branch 'iss53'
       testing ac33802 test
-    $ git branch –merged               [현재 브랜치에 머지된 것만 보여줌]
+    > git branch –merged               [현재 브랜치에 머지된 것만 보여줌]
       iss53
     * master
-    $ git branch –no-merged            [현재 브랜치에 머지 안된 것만]
+    > git branch –no-merged            [현재 브랜치에 머지 안된 것만]
       testing
-    $ git branch -d testing            [머지가 안된 브랜치는 삭제 안됨]
+    > git branch -d testing            [머지가 안된 브랜치는 삭제 안됨]
     error: The branch 'testing' is not fully merged.
     If you are sure you want to delete it, run 'git branch -D testing'.
     ```
@@ -268,10 +275,10 @@ backgroundColor: #fff
 - Merge  
 ![w:350px](images/branch-commit3.png)![w:400px](images/branch-commit4.png)
 - Rebase
-    ```bash
-    $ git checkout testing
+    ```
+    > git checkout testing
     Switched to branch 'testing'
-    $ git rebase master
+    > git rebase master
     First, rewinding head to replay your work on top of it...							
     Applying: Add test.c
     ```
@@ -280,10 +287,10 @@ backgroundColor: #fff
 
 ## 브랜치 합치기 Rebase
 - master를 Fast-forward시키면 합치기 끝
-    ```bash
-    $ git checkout master
+    ```
+    > git checkout master
     Switched to branch 'master'
-    $ git merge testing
+    > git merge testing
     Updating f1f2a4c..4e521e3
     Fast-forward
     test.c | 0
@@ -305,18 +312,18 @@ backgroundColor: #fff
 - Stash는 Modified이면서 Tracked 상태인 파일과 Staged 상태인 파일들을 보관해두는 장소
     - Staged 상태 파일들은 복구될 때 Staging Area에서 내려감
 - 아직 끝나지 않은 수정사항을 스택에 잠시 저장했다가 나중에 다시 적용할 수 있음
-    ```bash
-    $ git status
+    ```
+    > git status
     On branch master
     Changes not staged for commit:
             modified:   test.c
-    $ git stash             [Commit하지 않은 파일들을 보관]
+    > git stash             [Commit하지 않은 파일들을 보관]
     Saved working directory and index state WIP on master: 30b027d test2
-    $ git stash apply       [보관한 파일들을 복구]
+    > git stash apply       [보관한 파일들을 복구]
     On branch master
     Changes not staged for commit:
             modified:   test.c
-    $ git stash drop        [보관 장소 제거]
+    > git stash drop        [보관 장소 제거]
     Dropped refs/stash@{0} (ecab01f27fc7a47b8a1994e400e4cb48ba49f195)
     ```
 
