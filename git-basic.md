@@ -395,17 +395,16 @@ Issue: [#365](https://link/to/issue/365)
 - 본문은 어떻게보다 무엇을, 왜에 맞춰 작성하기
 
 
-## Exercise
-
-- Exercise
+## 실습
+- 실습
+	- Developer PowerShell for VS를 실행 (윈도우, Visual Studio 설치 가정)
 	- 로컬 저장소를 생성한다.(git init)
-	- .gitignore 파일을 만들고 .o와 a.out을 넣는다.
+	- .gitignore 파일을 만들고 *.obj와 *.exe을 넣는다.
 	- .gitignore 파일을 staged/committed 한다.
-	- main.c 파일을 만들고 staged/committed 한다. (이후 main.c를 수정할 때마다 gcc로 컴파일 한다.)
+	- main.c 파일을 만들고 staged/committed 한다. (이후 main.c를 수정할 때마다 cl로 컴파일 한다.)
 	- main.c 파일에 main() 함수를 추가하고 staged/committed 한다.
 	- 태깅을 해본다. 태그 이름은 v1.0 으로 하자.
-	- main.c 파일에 multiplication_table() 함수를 추가하고 staged/committed 한다. (구구단 함수)
-	- main.c 파일 main() 함수에서 multiplication_table() 함수를 호출하도록 수정하고 staged/committed 한다.
+	- main.c 파일을 수정하고 staged/commit 한다.
 	- main.c 파일을 임의로 수정한다.
 	- git diff 를 해본다.
 	- main.c 파일을 마지막 committed 상태로 되돌린다.
