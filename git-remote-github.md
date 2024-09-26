@@ -338,13 +338,19 @@ backgroundColor: #fff
 
 
 ## Github Pull Request
-- Pull Request는 2가지로 사용 가능
-- 1. 권한이 없는 다른 사용자의 저장소에 변경 요청을 하는 것.
-    - 화면 오른쪽 위 Fork 버튼 (현재 로그인 ID: jyheo-st)
+- Pull Request의 용도
+1. 권한이 없는 다른 사용자의 저장소에 변경 요청
+    - 먼저 다른 사용자의 저장소를 fork
+    - fork된 저장소에 수정 하고
+    - Pull Request를 요청
+2. 브랜치를 만들고, 브랜치를 main에 merge하기 위해 다른 공동 작업자에게 요청
+    - 공동작업자는 코드를 리뷰하고 main에 merge할지 결정
+    - main 브랜치로만 merge됨
+
+## Github Pull Request
+- 권한이 없는 다른 사용자의 저장소에 변경 요청
+- 화면 오른쪽 위 Fork 버튼 (현재 로그인 ID: jyheo-st)
 ![](images/pull-request1.png)
-- 2. 브랜치를 만들고, 그 브랜치를 main에 merge하기 위해 공동 작업자에게 요청을 하는 것.
-    - 공동작업자는 코드를 리뷰하고 main에 머지할지 결정
-    - main 브랜치로만 머지됨
 
 
 ## Github Pull Request
@@ -353,7 +359,7 @@ backgroundColor: #fff
 
 
 ## Github Pull Request
-- 저장소 파일 변경
+- 복제된 저장소(jyheo-st/test) 파일 변경
     - git을 이용하여 로컬로 가져와서 변경 후 push
     - 또는 웹에서 바로 편집 가능
     - New pull request 버튼, Create Pull Request
@@ -369,17 +375,6 @@ backgroundColor: #fff
 - Fork한 저장소의 내용을 원본(upstream) 저장소의 최신 내용과 동기화 하기
     - 원본 저장소와 fork한 저장소에 새로 만든 커밋을 비교하여 merge하거나 discard하여 sync 수행
     - ![](images/sync-fork-dropdown.webp)
-
-
-## Github 공동 작업 초간단 시나리오
-- A가 오픈 소스 프로젝트 저장소 ‘bestsw’를 만들어 둔 상황
-- B가 ‘bestsw’가 마음에 들어서 사용하다가 수정을 할 필요가 생겼음
-- B는 Github의 ‘bestsw’ 저장소를 자신의 저장소로 fork해옴
-- Fork한 ‘B/bestsw’를 수정
-- 수정한 내용을 반영해달라고 A에게 pull request 보냄
-- A가 B의 수정 내용을 반영
-- A가 생각해보니 B가 프로젝트에 기여를 잘 할 것 같아서 공동 개발자(Collaborators)로 추가함
-- 이제부터 B는 직접 ‘bestsw’ 저장소에 수정 할 수 있음
 
 
 ## Exercise 3
