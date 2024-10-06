@@ -7,4 +7,4 @@ git, github lecture slides
 * [git-remote-github](https://jyheo.github.io/github-lecture/git-remote-github.html)
 * [github-issue](https://jyheo.github.io/github-lecture/github-issue.html)
 * [git-flow](https://jyheo.github.io/github-lecture/git-flow.html)
-* [github-action](https://jyheo.github.io/github-lecture/ci.html)
+* [github-actions](https://jyheo.github.io/github-lecture/github-actions.html)
