@@ -8,7 +8,8 @@ footer:
 backgroundColor: #fff
 ---
 
-# CI/CD
+# Github Actions
+### CI/CD
 <!-- _class: lead -->
 ### 허준영(jyheo@hansung.ac.kr)
 
