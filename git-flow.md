@@ -3,8 +3,8 @@ marp: true
 theme: my-theme
 paginate: true
 headingDivider: 2
-header: git/github - https://github.com/jyheo/github-lecture
-footer: 
+header: Git Flow
+footer: git/github - https://github.com/jyheo/github-lecture
 backgroundColor: #fff
 ---
 
