@@ -3,8 +3,8 @@ marp: true
 theme: my-theme
 paginate: true
 headingDivider: 2
-header: git/github - https://github.com/jyheo/github-lecture
-footer: 
+header: Open Source Software
+footer: git/github - https://github.com/jyheo/github-lecture
 backgroundColor: #fff
 ---
 
@@ -108,7 +108,14 @@ backgroundColor: #fff
 - Apache 2.0
 	- Copyleft나 수정 사항 공개 등의 의무가 없음
 	- 명시적 특허 사용 허락
-- MIT와 Apache 2.0이 가장 많이 사용됨
+- MIT(90% 이상)와 Apache 2.0이 가장 많이 사용됨
+
+
+## OSS License 위반 모니터링
+
+![](images/oss-violation.png)
+
+출처: 국가R&D 공개SW 활용방안, NIPA, 2011
 
 
 ## OSS 찾기
@@ -123,6 +130,20 @@ backgroundColor: #fff
 ## Black Duck Open Hub
 ![](images/blackduck2.png)
 
+
+## 기업에서 OSS 사용 현황
+- 절반 이상의 소프트웨어 회사가 OSS 사용
+	- 절반 가까운 회사가 OSS에 대한 정책(검증, 변경 추적, 취약점 파악 등) 부재
+- 회사가 개발자에게 OSS 기여 권장
+	- 상당 수 회사가 풀타임 OSS 개발자 있음
+- OSS 기여 이유
+	- 버그 수정/ 기능 추가, 경쟁력 확보, 개발 비용 절감
+- OSS 사용 이유
+	- 품질, 좋은 기능/기술, 커스터마이즈 가능
+- OSS 사용 부분
+	- 운영체제, 데이터베이스, 개발 도구(많은 회사가 버전관리로 Git 사용)
+- OSS를 통한 수익
+	- SaaS, 커스텀 개발, 서비스/지원
 
 # Q&A
 <!-- _class: lead -->
