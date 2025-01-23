@@ -745,7 +745,7 @@
         <span class="hljs-string">~/.gradle/wrapper</span>    <span class="hljs-comment"># cache할 경로</span>
       <span class="hljs-attr">key:</span> <span class="hljs-string">${{</span> <span class="hljs-string">runner.os</span> <span class="hljs-string">}}-build-${{</span> <span class="hljs-string">hashFiles(&#x27;a-file&#x27;)</span> <span class="hljs-string">}}</span> <span class="hljs-comment"># 어떤 파일의 hash 값을 키에 사용</span>
   <span class="hljs-bullet">-</span> <span class="hljs-attr">if:</span> <span class="hljs-string">${{</span> <span class="hljs-string">steps.cache-gradle.outputs.cache-hit</span> <span class="hljs-type">!=</span> <span class="hljs-string">&#x27;true&#x27;</span> <span class="hljs-string">}}</span>  <span class="hljs-comment"># cache-hit 는 캐시 hit 여부</span>
-    <span class="hljs-string">run</span> <span class="hljs-string">echo</span> <span class="hljs-string">${{</span> <span class="hljs-string">steps.cache-gradle.outputs.cache-hit</span> <span class="hljs-string">}}</span>
+    <span class="hljs-attr">run:</span> <span class="hljs-string">echo</span> <span class="hljs-string">${{</span> <span class="hljs-string">steps.cache-gradle.outputs.cache-hit</span> <span class="hljs-string">}}</span>
 </code></pre>
 <footer>git/github - <a href="https://github.com/jyheo/github-lecture">https://github.com/jyheo/github-lecture</a></footer>
 </section>

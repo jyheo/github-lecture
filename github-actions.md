@@ -502,7 +502,7 @@ steps:
         ~/.gradle/wrapper    # cache할 경로
       key: ${{ runner.os }}-build-${{ hashFiles('a-file') }} # 어떤 파일의 hash 값을 키에 사용
   - if: ${{ steps.cache-gradle.outputs.cache-hit != 'true' }}  # cache-hit 는 캐시 hit 여부
-    run echo ${{ steps.cache-gradle.outputs.cache-hit }}
+    run: echo ${{ steps.cache-gradle.outputs.cache-hit }}
 ```
 
 ## Cache dependency
