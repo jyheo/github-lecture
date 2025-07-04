@@ -467,7 +467,7 @@ name: Call a reusable workflow and use its outputs
 on:
   workflow_dispatch
 jobs:
-  job1:
+  job1:   # 다른 workflow를 호출할 때는 steps 없이 바로 uses로 호출 가능
     uses: jyheo/test3/.github/workflows/reusable-workflow.yml@main
     with:
       input1: 10  # 입력 input1 을 10으로 하여 reusable-workflow 실행
