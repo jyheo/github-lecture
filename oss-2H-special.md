@@ -3,9 +3,9 @@ marp: true
 theme: my-theme
 paginate: true
 headingDivider: 2
-header: Open Source Software
+header: 한국교통대 K-옴니버스 세미나 <소프트웨어 자유와 혁신: 오픈소스 개념과 라이선스>
 footer: git/github - https://github.com/jyheo/github-lecture
-backgroundColor: #fff
+backgroundColor: #e2eef3ff
 ---
 
 # 소프트웨어 자유와 혁신: <br/> <small>오픈소스 개념과 라이선스</small>
