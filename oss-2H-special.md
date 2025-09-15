@@ -213,6 +213,10 @@ backgroundColor: #e2eef3ff
 출처: 국가R&D 공개SW 활용방안, NIPA, 2011
 
 
+## OSS 프로젝트
+![출처: https://www.linkedin.com/pulse/top-10-open-source-software-risks-agasthiamani-sankaran/](images/oss_projects.png)
+
+
 ## OSS 찾기
 - Black Duck Open Hub
 	- https://www.openhub.net
